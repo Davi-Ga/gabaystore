@@ -4,7 +4,7 @@ services:
 
   django:
     build: .
-    container_name: djangoprojetoint
+    container_name: djangoproject
     command: "gunicorn app.wsgi:application --bind 0.0.0.0:5353 --reload"
     env_file:
       - .env
@@ -17,7 +17,7 @@ services:
 
   nginx:
     image: nginx:stable-alpine
-    container_name: nginxprojetoint
+    container_name: nginxproject
     restart: unless-stopped
     volumes:
       - ./nginx:/etc/nginx/conf.d
@@ -29,15 +29,15 @@ services:
   
   db:
     image: postgres:13
-    container_name: postgresprojetoint
+    container_name: postgresproject
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres-project:/var/lib/postgresql/data
     
 volumes:
-  postgres-data:
+  postgres-project:
     external: true
 
 
