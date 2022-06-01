@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class GabaystoreConfig(AppConfig):
+class GabayStoreConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'gabaystore'
