@@ -5,11 +5,13 @@ services:
   django:
     build: .
     container_name: djangoproject
-    command: "gunicorn app.wsgi:application --bind 0.0.0.0:5353 --reload"
+    restart: always
+    command: sh -c "python manage.py collectstatic --noinput && gunicorn app.wsgi:application -b 0.0.0.0:5353"
     env_file:
       - .env
     volumes:
       - ./app:/app/
+      - /app/static:/static
     expose:
      - "5353"
     depends_on:
@@ -20,7 +22,9 @@ services:
     container_name: nginxproject
     restart: unless-stopped
     volumes:
+      - .app:/app
       - ./nginx:/etc/nginx/conf.d
+      - /app/static:/static
     ports:
       - "5353:5353"
     depends_on:
@@ -30,6 +34,7 @@ services:
   db:
     image: postgres:13
     container_name: postgresproject
+    restart: always
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
