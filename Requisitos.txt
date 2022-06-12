@@ -1,0 +1,5 @@
+-Roupas(cor,tamanho,tecido ,Tipo)
+
+
+
+-ContaUser(nome,usuario,senha,email) -Implementar por ultimo
