@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate,login,logout
-from forms import UserRegisterForm
+from gabaystore.forms import UserRegisterForm
 
 def home(request):
     return render(request,'gabaystore/home.html')
