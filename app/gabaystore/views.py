@@ -2,6 +2,9 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate,login,logout
 from forms import UserRegisterForm
 
+def home(request):
+    return render(request,'gabaystore/home.html')
+
 def login(request):
     if request.user.is_authenticated:
         redirect('homePage')
