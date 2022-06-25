@@ -19,5 +19,10 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.login,name='loginPage')
+    path('',views.home,name='homePage'),
+    
+    path('register/',views.register,name='registerPage'),
+    path('login/',views.login,name='loginPage'),
+    path('logout/',views.logout,name='logoutPage'),
+
 ]
