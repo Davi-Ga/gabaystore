@@ -8,14 +8,8 @@ def home(request):
     Cloth.objects.all()
     return render(request,'gabaystore/home.html')
 
-def clothing_detail(request,pk_cloth):
-    pk_cloth=int(pk_cloth)
-    cloth=Cloth.objects.get(id=pk_cloth)
-    context={
-        'cloth':cloth
-    }
-    return render(request,'gabaystore/cloth_detail.html',context=context)
-
+def profile(request):
+    return render(request,'gabaystore/profile.html')
 
 def login(request):
     if request.user.is_authenticated:
@@ -85,3 +79,11 @@ def clothing_update(request,pk_cloth):
         'form':form
     }
     return render(request,'gabaystore/cloth_update.html',context=context)
+
+def clothing_detail(request,pk_cloth):
+    pk_cloth=int(pk_cloth)
+    cloth=Cloth.objects.get(id=pk_cloth)
+    context={
+        'cloth':cloth
+    }
+    return render(request,'gabaystore/cloth_detail.html',context=context)
