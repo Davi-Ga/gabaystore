@@ -17,7 +17,7 @@ TYPES_CHOICES=[
 
 class Cloth(models.Model):
     name=models.CharField(max_length=150,null=False,unique=True)
-    picture=models.ImageField()
+    picture=models.ImageField(null=False)
     size=models.CharField(max_length=1,null=False,choices=SIZE_CHOICES)
     clothing_type=models.CharField(max_length=10,null=False,choices=TYPES_CHOICES)
     
