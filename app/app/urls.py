@@ -24,5 +24,11 @@ urlpatterns = [
     path('register/',views.register,name='registerPage'),
     path('login/',views.login,name='loginPage'),
     path('logout/',views.logout,name='logoutPage'),
+    path('profile/',views.profile,name='profilePage'),
+    
+    path('cloth_add/',views.clothing_add,name='addClothPage'),
+    path('cloth_delete/<int:pk_cloth>',views.clothing_delete,name='deleteClothPage'),
+    path('cloth_update/<int:pk_cloth>',views.clothing_update,name='updateClothPage'),
+    path('cloth_detail/<int:pk_cloth>',views.clothing_detail,name='detailClothPage'),
 
 ]
