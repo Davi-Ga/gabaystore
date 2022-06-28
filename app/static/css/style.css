@@ -1,21 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 body{
-    background: gray;
+  background: linear-gradient(to right,#b315e8,#dfd55e);
 }
-
-::-webkit-scrollbar {
-    width: 8px;
-  }
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
