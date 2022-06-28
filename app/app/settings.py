@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gabaystore.apps.GabayStoreConfig',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'django_filters',
+    'fontawesomefree',
 ]
 
 MIDDLEWARE = [
@@ -82,9 +86,14 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(os.getenv('POSTGRES_NAME')),
+        'USER': str(os.getenv('POSTGRES_USER')),
+        'PASSWORD': str(os.getenv('POSTGRES_PASSWORD')),
+        'HOST': str(os.getenv('POSTGRES_HOST')),
+        'PORT': str(os.getenv('POSTGRES_PORT')),
     }
 }
+
 
 
 # Password validation
