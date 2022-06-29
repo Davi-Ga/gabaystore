@@ -2,6 +2,7 @@
 {% load crispy_forms_tags  %}
 {% load static %}
 {% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -17,7 +18,7 @@
 
                   <div class="form-outline form-white mb-4">
                   <div id="div_id_username" class="control-group">
-                    <label for="username" class="control-label">Display name</label>
+                    
                       <div class="controls">
                           {{ form.username|as_crispy_field}}
                       </div>
@@ -26,27 +27,27 @@
 
                   <div class="form-outline form-white mb-4">
                   <div id="div_email" class="control-group">
-                    <label for="email" class="control-label">Email</label>
+                   
                       <div class="controls">
-                          <input class="form-control form-control-lg" id="email" maxlength="254" name="email" required="required" type="email" />
+                        {{ form.email|as_crispy_field}}
                       </div>
                   </div>
               </div>
               
                   <div class="form-outline form-white mb-4">
                     <div id="div_password1" class="control-group">
-                      <label for="password1" class="control-label">Password</label>
+                      
                         <div class="controls">
-                            <input class="form-control form-control-lg" id="password1" maxlength="254" name="password1" required="required" type="password" />
+                          {{ form.password1|as_crispy_field}}
                         </div>
                     </div>
                 </div>
 
                     <div class="form-outline form-white mb-4">
                       <div id="div_password2" class="control-group">
-                        <label for="password2" class="control-label">Confirm password</label>
+                        
                           <div class="controls">
-                              <input class="form-control form-control-lg" id="password2" maxlength="254" name="password2" required="required" type="password" />
+                            {{ form.password2|as_crispy_field}}
                           </div>
                       </div>
                   </div>
@@ -63,7 +64,7 @@
             </div>
 
             <div>
-              <p class="mb-0">Already have an account? <a href="{% url 'loginPage' %}" class="text-black-50 fw-bold">Sign in</a>
+              <p class="mb-0">Already have an account? <a href="/login" class="text-black-50 fw-bold">Sign in</a>
               </p>
             </div>
 
