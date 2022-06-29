@@ -5,8 +5,9 @@ from .models import Cloth
 from .forms import ClothingForm
 
 def home(request):
-    Cloth.objects.all()
+    
     return render(request,'gabaystore/home.html')
+
 
 def profile(request):
     return render(request,'gabaystore/profile.html')
@@ -47,6 +48,13 @@ def register(request):
             'form':form
         }
         return render(request,'user/register.html',context=context)
+    
+def store(request):
+    clothes=Cloth.objects.all()
+    context={
+        'clothes':clothes
+    }
+    return render(request,'gabaystore/store.html',context=context)
 
 def clothing_add(request):
     form=ClothingForm()
