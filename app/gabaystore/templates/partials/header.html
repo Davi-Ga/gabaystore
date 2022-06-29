@@ -202,7 +202,7 @@
               <i class="bx bx-grid-alt nav_icon"></i>
               <span class="nav_name">Home</span>
             </a>
-            <a href="#" class="nav_link">
+            <a href="{% url 'storePage' %}" class="nav_link">
               <i class="bx bx-user nav_icon"></i>
               <span class="nav_name">Store</span>
             </a>
@@ -219,17 +219,19 @@
         </div>
         {% if user.is_authenticated %}
         
-        <a href="#" class="nav_link">
-          <i class="bx bx-log-out nav_icon"></i>
-          <span class="nav_name">Sign Out</span>
-        {% endif %}
+          <a href="#" class="nav_link">
+            <i class="bx bx-log-out nav_icon"></i>
+            <span class="nav_name">Sign Out</span>
+          </a>
+          {% endif %}
         {% if not user.is_authenticated %}
         
-        <a href="{% url 'loginPage' %}" class="nav_link">
-          <i class="bx bx-log-in nav_icon"></i>
-          <span class="nav_name">Login</span>
+          <a href="{% url 'loginPage' %}" class="nav_link">
+            <i class="bx bx-log-in nav_icon"></i>
+            <span class="nav_name">Login</span>
+          </a>
         {% endif %}
-        </a>
+       
       </nav>
     </div>
     <!--Container Main start-->
