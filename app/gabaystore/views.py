@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate,login,logout
-from gabaystore.forms import UserRegisterForm
+from .forms import RegisterUserForm
 from .models import Cloth
 from .forms import ClothingForm
 
@@ -13,7 +13,7 @@ def profile(request):
 
 def login(request):
     if request.user.is_authenticated:
-        redirect('homePage')
+       return redirect('homePage')
     else:
         if request.method=='POST':
             username = request.POST.get('username')
@@ -25,6 +25,7 @@ def login(request):
                 return redirect('homePage')
             else:
                 return #Error mensage
+            
         context={}
         return render(request,'user/login.html',context=context)
 
@@ -34,11 +35,11 @@ def logout(request):
 
 def register(request):
     if request.user.is_authenticated:
-        redirect('homePage')
+       return redirect('homePage')
     else:
-        form=UserRegisterForm()
+        form=RegisterUserForm()
         if request.method=='POST':
-            form=UserRegisterForm(request.POST)
+            form=RegisterUserForm(request.POST)
             if form.is_valid():
                 form.save()    
                 return redirect('loginPage')
