@@ -226,11 +226,15 @@
           {% endif %}
         {% if not user.is_authenticated %}
         
-          <a href="{% url 'loginPage' %}" class="nav_link">
+          <a href="{% url 'addClothPage' %}" class="nav_link">
             <i class="bx bx-log-in nav_icon"></i>
-            <span class="nav_name">Login</span>
+            <span class="nav_name">Add cloth</span>
           </a>
         {% endif %}
+        <a href="{% url 'loginPage' %}" class="nav_link">
+          <i class="bx bx-log-in nav_icon"></i>
+          <span class="nav_name">Login</span>
+        </a>
        
       </nav>
     </div>
