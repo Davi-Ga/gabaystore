@@ -20,7 +20,7 @@ class Cloth(models.Model):
     picture=models.ImageField(null=False)
     size=models.CharField(max_length=2,null=False,choices=SIZE_CHOICES)
     clothing_type=models.CharField(max_length=20,null=False,choices=TYPES_CHOICES)
-    price= models.DecimalField(max_digits=10, decimal_places=2)
+    price= models.DecimalField(max_digits=10, decimal_places=2,null=False)
     
     
     class Meta:
