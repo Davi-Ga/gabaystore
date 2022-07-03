@@ -23,7 +23,7 @@ class RegisterUserForm(UserCreationForm):
 class ClothingForm(forms.ModelForm):
     class Meta:
         model=Cloth
-        fields=['name','picture','size']
+        fields=['name','picture','size','clothing_type','price']
         widgets={
             'name':forms.TextInput(attrs={'class':'form-control'}),
             'picture':forms.FileInput(attrs={'class':'form-control'}),
