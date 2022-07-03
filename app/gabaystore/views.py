@@ -62,7 +62,7 @@ def clothing_add(request):
         form=ClothingForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('homePage')
+            return redirect('addClothPage')
     context={
         'form':form
     }
