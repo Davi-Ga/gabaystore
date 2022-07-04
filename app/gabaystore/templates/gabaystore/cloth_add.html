@@ -10,7 +10,7 @@
           <div class="card-body p-5 text-center">
 
             <div class="mb-md-5 mt-md-4 pb-5">
-              <form action="" method="POST">
+              <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
                   <div class="form-outline form-white mb-4">
@@ -22,11 +22,8 @@
                   </div>
               </div>
 
-          
-
-
               <p class="small mb-5 pb-lg-2"><a class="text-black-50" href="#!"></a></p>
-
+    
               <button class="btn btn-outline-dark btn-lg px-5" type="submit">Add</button>
 
          
