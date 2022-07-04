@@ -13,9 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from gabaystore import views
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,7 +25,7 @@ urlpatterns = [
     
     path('register/',views.register,name='registerPage'),
     path('login/',views.login,name='loginPage'),
-    path('logout/',views.logout,name='logoutPage'),
+    path('logout/',views.logoutUser,name='logoutPage'),
     path('profile/',views.profile,name='profilePage'),
     
     path('store/',views.store,name='storePage'),
@@ -33,3 +35,6 @@ urlpatterns = [
     path('cloth_detail/<int:pk_cloth>',views.clothing_detail,name='detailClothPage'),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
