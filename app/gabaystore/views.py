@@ -30,7 +30,7 @@ def login(request):
         context={}
         return render(request,'user/login.html',context=context)
 
-def logout(request):
+def logoutUser(request):
     logout(request)
     return redirect('homePage')
 
