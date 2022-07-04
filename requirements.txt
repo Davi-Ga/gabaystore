@@ -7,3 +7,4 @@ crispy-bootstrap5
 django-filter
 fontawesomefree
 Pillow
+django-stdimage
