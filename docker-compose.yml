@@ -12,6 +12,7 @@ services:
     volumes:
       - ./app:/app/
       - /app/static:/static
+      - /app/media:/media
     expose:
      - "5353"
     depends_on:
@@ -23,9 +24,10 @@ services:
     container_name: nginxproject
     restart: unless-stopped
     volumes:
-      - .app:/app
+      - ./app:/app
       - ./nginx:/etc/nginx/conf.d
       - /app/static:/static
+      - /app/media:/media
     ports:
       - "5353:5353"
     depends_on:
