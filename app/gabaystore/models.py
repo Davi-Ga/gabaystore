@@ -21,7 +21,7 @@ TYPES_CHOICES=[
 
 class Cloth(models.Model):
     name=models.CharField(max_length=150,null=False,unique=True)
-    picture=StdImageField(upload_to='images/',null=False,blank=False, variations={'thumbnail': (100, 100)})
+    picture=models.ImageField(upload_to='images/',null=False,blank=False)
     size=models.CharField(max_length=2,null=False,choices=SIZE_CHOICES)
     clothing_type=models.CharField(max_length=20,null=False,choices=TYPES_CHOICES)
     price= models.DecimalField(max_digits=10, decimal_places=2,null=False)
