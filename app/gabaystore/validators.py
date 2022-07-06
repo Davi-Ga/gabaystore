@@ -1,34 +1,40 @@
 from django.core.exceptions import ValidationError
 from django import forms
+from django.core.files.uploadedfile import UploadedFile
+from django.db.models.fields.files import ImageFieldFile
 import os
 
-def validate_file_type(value):
-    filetype = value.content_type
-    if not filetype in ['image/jpeg', 'image/png']:
-        raise ValidationError(u'Unsupported file type.')
     
-def validate_file_name(value):
-    filename = value.name
+def validate_file_name(image):
+    filename = image.file.name
     if not filename.lower().endswith(('.jpg', '.jpeg', '.png')):
-        raise ValidationError(u'Unsupported file extension.')
+        raise ValidationError('Unsupported file extension.')
+    else:
+        return image
 
-def validate_file_extension_and_size(value):
-    ext = os.path.splitext(value.name)[1]  # [0] returns path+filename
+def validate_file_extension_and_size(image):
+    ext = os.path.splitext(image.file.name)[1]  # [0] returns path+filename
     valid_extensions = ['.jpg', '.jpeg', '.png']
     if not ext.lower() in valid_extensions:
-        raise ValidationError(u'Unsupported file extension.')
-    filesize = value.size
+        raise ValidationError('Unsupported file extension.')
+    filesize = image.file.size
     if filesize > 2097152:
-        raise ValidationError(u'File too large. Size limit is 2 MB.')
+        raise ValidationError('File too large. Size limit is 2 MB.')
+    else:
+        return image
 
 def validate_price(value):
     if value < 0:
-        raise ValidationError(u'Price cannot be negative.')
+        raise ValidationError('Price cannot be negative.')
     if value == 0:
-        raise ValidationError(u'Price cannot be zero.')
+        raise ValidationError('Price cannot be zero.')
+    else:
+        return value
     
 def validate_quantity(value):
     if value < 0:
-        raise ValidationError(u'Quantity cannot be negative.')
+        raise ValidationError('Quantity cannot be negative.')
     if value == 0:
-        raise ValidationError(u'Quantity cannot be zero.')
+        raise ValidationError('Quantity cannot be zero.')
+    else:
+        return value
