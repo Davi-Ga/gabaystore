@@ -1,7 +1,4 @@
 from django.core.exceptions import ValidationError
-from django import forms
-from django.core.files.uploadedfile import UploadedFile
-from django.db.models.fields.files import ImageFieldFile
 import os
 
     
