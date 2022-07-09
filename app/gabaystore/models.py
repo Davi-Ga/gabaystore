@@ -36,7 +36,7 @@ class Cloth(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse("cloth_detail", args=[str(self.id)])
+        return reverse("gabaystore:detailClothPage", args=self.id)
     
     
 def cloth_pre_save(sender, instance, signal, **kwargs):
