@@ -3,11 +3,9 @@
 {% block content %}
 {% for Cloth in clothes %}
 <div class="card" style="width: 18rem;">
-  <img src="{{Cloth.picture.url}}" class="card-img-top" alt="{{Cloth.picture.url}}">
+  <a href="{% url 'detailClothPage' Cloth.id%}" id="{{Banco.id}}"><img src="{{Cloth.picture.url}}" class="card-img-top" alt="{{Cloth.picture.url}}"></a>
   <div class="card-body">
     <h5 class="card-title">{{Cloth.name}}</h5>
-    <p class="card-text">Size:{{Cloth.size}}</p>
-    <p class="card-text">Type:{{Cloth.clothing_type}}</p>
     <p class="card-text">Price: U${{Cloth.price}}</p>
     <a href="" class="btn btn-primary">Go somewhere</a>
   </div>
