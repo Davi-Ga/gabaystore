@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 import os
 
+BLACKLIST=['name','picture','size','clothing_type','price','amount','slug','id','created_at','updated_at','__str__','get_absolute_url','__unicode__','__repr__']    
     
 def validate_file_name(image):
     filename = image.file.name
@@ -33,5 +34,25 @@ def validate_quantity(value):
         raise ValidationError('Quantity cannot be negative.')
     if value == 0:
         raise ValidationError('Quantity cannot be zero.')
+    else:
+        return value
+    
+def validate_size(value):
+    if value not in ['XS','S','M','L','XL']:
+        raise ValidationError('Size must be one of the following: XS, S, M, L, XL')
+    else:
+        return value
+    
+def validate_clothing_type(value):
+    if value not in ['T-Shirt','Hoodie','Shirt']:
+        raise ValidationError('Clothing type must be one of the following: T-Shirt, Hoodie, Shirt')
+    else:
+        return value
+    
+def validate_name(value):
+    if value == '':
+        raise ValidationError('Name cannot be empty.')
+    if not len(value) > 7:
+        raise ValidationError('Name must be at least 8 characters long.')
     else:
         return value
