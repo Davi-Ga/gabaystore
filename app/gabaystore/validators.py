@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 import os
+import re
 
 BLACKLIST=['name','picture','size','clothing_type','price','amount','slug','id','created_at','updated_at','__str__','get_absolute_url','__unicode__','__repr__']    
     
@@ -52,7 +53,12 @@ def validate_clothing_type(value):
 def validate_name(value):
     if value == '':
         raise ValidationError('Name cannot be empty.')
-    if not len(value) > 7:
-        raise ValidationError('Name must be at least 8 characters long.')
+    if not re.match(r'^[A-Za-z0-9]'):
+        raise ValidationError('Only letters characters are allowed.')
+    if not len(value) >= 4:
+        raise ValidationError('Name must be at least 4 characters long.')
+    if value in BLACKLIST:
+        raise ValidationError('Name is not accepted.')
     else:
         return value
+
