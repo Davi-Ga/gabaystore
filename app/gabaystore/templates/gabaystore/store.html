@@ -8,10 +8,10 @@
  
     <div class="col" style="width: 18rem;">
       <div class="card">
-        <a href="{% url 'detailClothPage' Cloth.id%}" id="{{Banco.id}}"><img src="{{Cloth.picture.url}}" class="card-img-top" alt="{{Cloth.picture.url}}"></a>
+        <a href="{% url 'detailClothPage' Cloth.slug%}"><img src="{{Cloth.picture.url}}" class="card-img-top" alt="{{Cloth.picture.url}}" style="width: 16.4rem; height: 12.5rem;"></a>
         <div class="card-body">
           <h5 class="card-title">{{Cloth.name}}</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text">USD$: {{Cloth.price}}</p>
         </div>
       </div>
     </div>
