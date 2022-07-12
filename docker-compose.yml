@@ -13,13 +13,26 @@ services:
       - ./app:/app/
       - /app/static:/static
       - /app/media:/media
-    ports:
-     - 5353:5353
+    expose:
+     - "5353"
     depends_on:
       db:
         condition: service_healthy
 
-  
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginxproject
+    restart: unless-stopped
+    volumes:
+      - ./app:/app
+      - ./nginx:/etc/nginx/conf.d
+      - /app/static:/static
+      - /app/media:/media
+    ports:
+      - "5353:5353"
+    depends_on:
+      - django
+
   db:
     image: postgres:13
     container_name: postgresproject
