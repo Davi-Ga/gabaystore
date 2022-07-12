@@ -1,5 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate,login,logout
+
+from app.gabaystore.decorators import allowed_users
 from .forms import RegisterUserForm
 from .models import Cloth
 from .forms import ClothingForm
@@ -56,6 +58,7 @@ def store(request):
     }
     return render(request,'gabaystore/store.html',context=context)
 
+@allowed_users(allowed_roles=['admin'])
 def clothing_add(request):
     form=ClothingForm()
     if request.method=='POST':
@@ -68,6 +71,7 @@ def clothing_add(request):
     }
     return render(request,'gabaystore/cloth_add.html',context=context)
 
+@allowed_users(allowed_roles=['admin'])
 def clothing_delete(request,pk_cloth):
     pk_cloth=int(pk_cloth)
     cloth=Cloth.objects.get(id=pk_cloth)
@@ -75,6 +79,7 @@ def clothing_delete(request,pk_cloth):
     
     return redirect('homePage')
 
+@allowed_users(allowed_roles=['admin'])
 def clothing_update(request,pk_cloth):
     pk_cloth=int(pk_cloth)
     cloth=Cloth.objects.get(id=pk_cloth)
