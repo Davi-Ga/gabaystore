@@ -89,9 +89,11 @@ def clothing_update(request,pk_cloth):
     }
     return render(request,'gabaystore/cloth_update.html',context=context)
 
-def clothing_detail(request,pk_cloth):
-    pk_cloth=int(pk_cloth)
-    cloth=Cloth.objects.get(id=pk_cloth)
+def clothing_detail(request,slug=None):
+    cloth = None
+   # pk_cloth=int(pk_cloth)
+    if slug is not None:
+        cloth = Cloth.objects.get(slug=slug)
     context={
         'cloth':cloth
     }
