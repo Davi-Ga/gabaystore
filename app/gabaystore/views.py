@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate,logout,login
 
-from app.gabaystore.decorators import allowed_users
+from .decorators import allowed_users
 from .forms import RegisterUserForm
 from .models import Cloth
 from .forms import ClothingForm
@@ -14,7 +14,7 @@ def home(request):
 def profile(request):
     return render(request,'gabaystore/profile.html')
 
-def login(request):
+def loginUser(request):
     if request.user.is_authenticated:
        return redirect('homePage')
     else:
