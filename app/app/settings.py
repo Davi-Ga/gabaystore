@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from dotenv import load_dotenv
+import dj_database_url
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
@@ -47,7 +48,6 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'django_filters',
     'fontawesomefree',
-    'stdimage',
 ]
 
 MIDDLEWARE = [
@@ -95,6 +95,7 @@ DATABASES = {
     }
 }
 
+#DATABASES = {'default': dj_database_url.config(default=str(os.getenv('POSTGRES_URL'))}
 
 
 # Password validation
