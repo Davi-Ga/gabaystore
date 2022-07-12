@@ -7,4 +7,4 @@ crispy-bootstrap5
 django-filter
 fontawesomefree
 Pillow
-django-stdimage
+dj-database-url
