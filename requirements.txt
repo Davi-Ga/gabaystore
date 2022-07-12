@@ -7,4 +7,5 @@ crispy-bootstrap5
 django-filter
 fontawesomefree
 Pillow
-dj-database-url
+django-heroku
+whitenoise
