@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate,logout,login
-
-from .decorators import allowed_users
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from .decorators import allowed_users,admin_only,unauthenticated_user
 from .forms import RegisterUserForm
 from .models import Cloth
 from .forms import ClothingForm
@@ -32,9 +33,11 @@ def loginUser(request):
         context={}
         return render(request,'user/login.html',context=context)
 
+@login_required(login_url='loginPage')
 def logoutUser(request):
     logout(request)
     return redirect('homePage')
+
 
 def register(request):
     if request.user.is_authenticated:
@@ -58,6 +61,7 @@ def store(request):
     }
     return render(request,'gabaystore/store.html',context=context)
 
+@login_required(login_url='loginPage')
 @allowed_users(allowed_roles=['admin'])
 def clothing_add(request):
     form=ClothingForm()
@@ -71,6 +75,7 @@ def clothing_add(request):
     }
     return render(request,'gabaystore/cloth_add.html',context=context)
 
+@login_required(login_url='loginPage')
 @allowed_users(allowed_roles=['admin'])
 def clothing_delete(request,pk_cloth):
     pk_cloth=int(pk_cloth)
@@ -79,6 +84,7 @@ def clothing_delete(request,pk_cloth):
     
     return redirect('homePage')
 
+@login_required(login_url='loginPage')
 @allowed_users(allowed_roles=['admin'])
 def clothing_update(request,pk_cloth):
     pk_cloth=int(pk_cloth)
