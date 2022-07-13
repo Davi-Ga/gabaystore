@@ -1,1 +1,1 @@
-web: gunicorn app.wsgi:app -b 0.0.0.0:5353
+web: gunicorn app.wsgi.application -b 0.0.0.0:$PORT
