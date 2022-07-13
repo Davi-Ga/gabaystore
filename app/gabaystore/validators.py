@@ -53,8 +53,6 @@ def validate_clothing_type(value):
 def validate_name(value):
     if value == '':
         raise ValidationError('Name cannot be empty.')
-    if not re.match(r'^[A-Za-z0-9]'):
-        raise ValidationError('Only letters characters are allowed.')
     if not len(value) >= 4:
         raise ValidationError('Name must be at least 4 characters long.')
     if value in BLACKLIST:
