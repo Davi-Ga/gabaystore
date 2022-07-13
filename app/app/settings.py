@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-import django_heroku
+# import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +30,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','django_upstream','127.0.0.1','0.0.0.0','django','[::1]','*']
+ALLOWED_HOSTS = ['localhost','django_upstream','127.0.0.1','0.0.0.0','django','[::1]','*','https://gabaystore.herokuapp.com','http://localhost:6379','http://localhost:8000','http://localhost:5353']
 
 
 # Application definition
@@ -64,7 +64,19 @@ MIDDLEWARE = [
 CSRF_TRUSTED_ORIGINS = [
     'https://gabaystore.herokuapp.com',
     'http://localhost:5353',
+    'http://localhost:6379',
+    'http://localhost:8000',
 ]
+
+CORS_TRUSTED_ORIGINS = [
+    'https://gabaystore.herokuapp.com',
+    'http://localhost:6379',
+    'http://localhost:5353',
+    'http://localhost:8000',
+    
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'app.urls'
 
@@ -144,7 +156,7 @@ STATICFILES_DIRS=[
 ]
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
