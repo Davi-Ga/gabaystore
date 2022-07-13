@@ -183,12 +183,14 @@
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
       </div>
-      <div class="header_img">
-        <a href="#" >
-            <i class="bx bx-user nav_icon"></i>
-            
-          </a>
-      </div>
+      {% if user.is_authenticated %}
+        <div class="header_img">
+          <a href="#" >
+              <i class="bx bx-user nav_icon"></i>
+              
+            </a>
+        </div>
+      {% endif %}
     </header>
     <div class="l-navbar" id="nav-bar">
       <nav class="nav">
@@ -199,11 +201,11 @@
           </a>
           <div class="nav_list">
             <a href="{% url 'homePage' %}" class="nav_link active">
-              <i class="bx bx-grid-alt nav_icon"></i>
+              <i class='bx bx-home-alt-2 nav_icon'></i>
               <span class="nav_name">Home</span>
             </a>
             <a href="{% url 'storePage' %}" class="nav_link">
-              <i class="bx bx-user nav_icon"></i>
+              <i class='bx bx-store-alt nav_icon' ></i>
               <span class="nav_name">Store</span>
             </a>
             <a href="#" class="nav_link">
@@ -219,7 +221,7 @@
         </div>
         {% if request.user.is_staff %}
           <a href="{% url 'addClothPage' %}" class="nav_link">
-            <i class="bx bx-log-in nav_icon"></i>
+            <i class='bx bx-folder-plus nav_icon' ></i>
             <span class="nav_name">Add cloth</span>
           </a>
         {% endif %}
