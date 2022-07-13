@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-import django_heroku
+# import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -57,6 +57,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://gabaystore.herokuapp.com',
+    'http://localhost:5353',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -137,13 +142,11 @@ STATICFILES_DIRS=[
 ]
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
-
-os.environ['DJANGO_SETTINGS_MODULE'] = '.settings'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
