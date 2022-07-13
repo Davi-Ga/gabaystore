@@ -9,3 +9,4 @@ fontawesomefree
 Pillow
 django-heroku
 whitenoise
+django-defender
