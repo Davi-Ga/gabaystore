@@ -15,8 +15,13 @@
                 <p class="card-text">Size:{{cloth.size}}</p>
                 <p class="card-text">Type:{{cloth.clothing_type}}</p>
                 <p class="card-text">Price: U${{cloth.price}}</p>
-                
-                <button class="btn btn-outline-dark btn-lg px-5" type="submit">Buy</button>
+                {% if not request.user.is_staff  %}
+                  <button class="btn btn-outline-dark btn-lg px-5" type="submit">Buy</button>
+                {% endif %}
+                {% if request.user.is_staff %}
+                <a  href= "{% url 'updateClothPage' Cloth.id %}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                <a href= "{% url 'deleteClothPage' Cloth.id %}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                {% endif %}
   
            
             
