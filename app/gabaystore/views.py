@@ -98,7 +98,7 @@ def clothing_update(request,pk_cloth):
     context={
         'form':form
     }
-    return render(request,'gabaystore/cloth_update.html',context=context)
+    return render(request,'gabaystore/cloth_add.html',context=context)
 
 def clothing_detail(request,slug=None):
     cloth = None
