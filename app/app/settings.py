@@ -31,7 +31,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # Configuração para o ambiente de produção
 DEBUG = True
 import django_heroku
-django_heroku.settings(locals())
+
 
 
 # Acessos permitidos para o ambiente de produção
@@ -63,8 +63,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'defender.middleware.FailedLoginMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'defender.middleware.FailedLoginMiddleware',
 ]
 CSRF_TRUSTED_ORIGINS = [
     'https://gabaystore.herokuapp.com',
@@ -167,7 +167,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #Crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
-
+django_heroku.settings(locals())
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
