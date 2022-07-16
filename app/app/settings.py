@@ -62,7 +62,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-     'defender.middleware.FailedLoginMiddleware',
+    'defender.middleware.FailedLoginMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 django_heroku.settings(locals())
 CSRF_TRUSTED_ORIGINS = [
