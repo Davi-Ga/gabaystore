@@ -31,7 +31,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # Configuração para o ambiente de produção
 DEBUG = True
 import django_heroku
-django_heroku.settings(locals())
+
 
 # Acessos permitidos para o ambiente de produção
 ALLOWED_HOSTS = ['localhost','django_upstream','127.0.0.1','0.0.0.0','django','[::1]','*','https://gabaystore.herokuapp.com','http://localhost:6379','http://localhost:8000','http://localhost:5353']
@@ -64,7 +64,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
      'defender.middleware.FailedLoginMiddleware',
 ]
-
+django_heroku.settings(locals())
 CSRF_TRUSTED_ORIGINS = [
     'https://gabaystore.herokuapp.com',
     'http://localhost:5353',
