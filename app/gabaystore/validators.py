@@ -60,12 +60,4 @@ def validate_name(value):
     else:
         return value
 
-def validate_description(value):
-    if value == '':
-        raise ValidationError('Description cannot be empty.')
-    if not len(value) >= 10:
-        raise ValidationError('Description must be at least 10 characters long.')
-    if value in BLACKLIST:
-        raise ValidationError('Description is not accepted.')
-    else:
-        return value
+
