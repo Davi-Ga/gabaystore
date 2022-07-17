@@ -13,4 +13,4 @@ COPY ./app /app
 
 RUN python manage.py collectstatic --noinput
 
-CMD sh -c "gunicorn app.wsgi.application -b 0.0.0.0:$PORT"
+CMD gunicorn app.wsgi:application -b 0.0.0.0:$PORT
