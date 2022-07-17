@@ -158,12 +158,12 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #Crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
