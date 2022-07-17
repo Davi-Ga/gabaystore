@@ -29,7 +29,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Configuração para o ambiente de produção
-DEBUG = True
+DEBUG = False
 import django_heroku
 
 
