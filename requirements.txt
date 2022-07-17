@@ -11,7 +11,6 @@ Pillow
 django-heroku
 whitenoise
 django-defender
-sgiref
 async-timeout
 packaging
 pyparsing
