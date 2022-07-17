@@ -1,1 +1,1 @@
-web: sh -c gunicorn app.wsgi.application -b 0.0.0.0:$PORT
+web: sh -c "gunicorn app.wsgi.application -b 0.0.0.0:$PORT"
