@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app.app.gabaystore.apps.gabayStoreConfig',
+    'gabaystore.apps.gabayStoreConfig',
     'crispy_forms',
     'crispy_bootstrap5',
     'django_filters',
