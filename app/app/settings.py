@@ -29,8 +29,9 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Configuração para o ambiente de produção
-DEBUG = True
+DEBUG = False
 import django_heroku
+django_heroku.settings(locals())
 
 
 
@@ -167,7 +168,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'/img/')
 #Crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
-django_heroku.settings(locals())
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
