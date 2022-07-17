@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'gabaystore.apps.gabayStoreConfig',
+    'app.gabaystore.apps.gabayStoreConfig',
     'crispy_forms',
     'crispy_bootstrap5',
     'django_filters',
@@ -101,7 +101,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'app.wsgi.application'
+WSGI_APPLICATION = 'app.app.wsgi.application'
 
 
 # Database
