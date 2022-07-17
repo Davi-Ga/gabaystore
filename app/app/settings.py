@@ -66,7 +66,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'defender.middleware.FailedLoginMiddleware',
 ]
-django_heroku.settings(locals())
 CSRF_TRUSTED_ORIGINS = [
     'https://gabaystore.herokuapp.com',
     'http://localhost:5353',
@@ -172,3 +171,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+django_heroku.settings(locals())
