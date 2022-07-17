@@ -11,4 +11,5 @@ RUN pip install --upgrade pip && pip install --no-cache-dir --upgrade -r require
 
 COPY ./app /app
 
+
 CMD gunicorn app.wsgi:application -b 0.0.0.0:$PORT
