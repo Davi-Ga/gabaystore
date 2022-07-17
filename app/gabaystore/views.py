@@ -8,8 +8,9 @@ from .models import Cloth
 from .forms import ClothingForm
 
 def home(request):
-    
+
     return render(request,'gabaystore/home.html')
+
 
 @login_required(login_url='loginPage')
 @allowed_users(allowed_roles=['customer'])
@@ -39,6 +40,7 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     return redirect('homePage')
+
 
 @unauthenticated_user
 def register(request):
@@ -70,6 +72,7 @@ def store(request):
     }
     return render(request,'gabaystore/store.html',context=context)
 
+
 @login_required(login_url='loginPage')
 @admin_only
 def clothing_add(request):
@@ -84,14 +87,15 @@ def clothing_add(request):
     }
     return render(request,'gabaystore/cloth_add.html',context=context)
 
+
 @login_required(login_url='loginPage')
 @admin_only
 def clothing_delete(request,pk_cloth):
     pk_cloth=int(pk_cloth)
     cloth=Cloth.objects.get(id=pk_cloth)
     cloth.delete()
-    
     return redirect('homePage')
+
 
 @login_required(login_url='loginPage')
 @admin_only
@@ -108,6 +112,7 @@ def clothing_update(request,pk_cloth):
         'form':form
     }
     return render(request,'gabaystore/cloth_add.html',context=context)
+
 
 def clothing_detail(request,slug=None):
     cloth = None
