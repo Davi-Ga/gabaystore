@@ -2,7 +2,7 @@
     "environments": {
       "test": {
         "scripts": {
-          "test": "nose test"
+          "test": "app/gabaystore/test/test_models.py"
         }
       }
     }
