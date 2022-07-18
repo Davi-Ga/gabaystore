@@ -1,10 +1,27 @@
 {
-    "environments": {
-      "test": {
-        "scripts": {
-          "test": "app/gabaystore/test/test_models.py"
+  "environments": {
+    "test": {
+      "formation": {
+        "test": {
+          "quantity": 2,
+          "size": "Standard-1X"
         }
+      },
+      "addons":[
+        "heroku-postgresql"
+      ],
+      "buildpacks": [
+        "heroku/python"       
+      ],
+      "scripts": {
+        "post-deploy": "heroku ps:scale test=2",
+        "post-deploy-production": "heroku ps:scale test=2",
+        "post-deploy-staging": "heroku ps:scale test=2",
+        "post-deploy-test": "heroku ps:scale test=2",
+        "post-deploy-development": "heroku ps:scale test=2",
+        "test-setup": "./test-setup.sh"
+
       }
     }
   }
-  
+}
