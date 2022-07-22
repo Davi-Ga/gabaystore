@@ -20,12 +20,6 @@ TYPES_CHOICES=[
     ('Shirt','Shirt'),
 ]
 
-STATUS_CHOICES=[
-        ('process','In Process'),
-        ('shipped','Shipped'),
-        ('delivered','Delivered'),
-]
-
 class Cloth(models.Model):
     name=models.CharField(max_length=150,null=False,unique=True,validators=[validate_name])
     picture=models.ImageField(upload_to='media/',null=False,blank=False,validators=[validate_file_name,validate_file_extension_and_size])
@@ -41,44 +35,45 @@ class Cloth(models.Model):
     def __str__(self):
         return self.name
     
-    def get_absolute_url(self):
-        return reverse("gabaystore:detailClothPage", args=self.id)
+    @property
+    def imageURL(self):
+        try:
+            url = self.picture.url
+        except:
+            url = ''
+        return url
     
+class Customer(models.Model):
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    email=models.EmailField(max_length=150,null=False,unique=True)
+ 
+    class Meta:
+        db_table = "Custumer" 
     
-def cloth_pre_save(sender, instance, signal, **kwargs):
-    if not instance.slug:
-        instance.slug = slugify(instance.name)
-    
-signals.pre_save.connect(cloth_pre_save, sender=Cloth)
+    def __str__(self):
+        return self.user
 
-class CartOrder(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+class Order(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     total_price=models.DecimalField(max_digits=10, decimal_places=2,null=False,validators=[validate_price])
-    paid_status=models.BooleanField(default=False)
-    order_status=models.CharField(max_length=30,null=False,choices=STATUS_CHOICES,default='process')
-    created_at=models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now=True)
+    date_order=models.DateTimeField(auto_now_add=True)
+    paid_status=models.BooleanField(default=False,null=True,blank=False)
+    transaction_id=models.CharField(max_length=200,null=True)
     
     class Meta:
         db_table = "CartOrder" 
     
-class CartOrderItems(models.Model):
-    order=models.ForeignKey(CartOrder,on_delete=models.CASCADE)
-    quantity=models.PositiveIntegerField(null=False,validators=[validate_quantity])
-    price=models.DecimalField(max_digits=10, decimal_places=2,null=False,validators=[validate_price])
-    invoice=models.CharField(max_length=150,null=False,unique=True)
-    item=models.ForeignKey(Cloth,on_delete=models.CASCADE)
-    picture=models.ImageField(null=False,blank=False,validators=[validate_file_name,validate_file_extension_and_size])
-    
-    class Meta:
-        db_table = "CartOrderItems" 
-    
     def __str__(self):
-        return self.cloth.name
+        return str(self.id)
     
-    def get_absolute_url(self):
-        return reverse("gabaystore:detailClothPage", args=self.cloth.id)
-    
-    def get_total_price(self):
-        return self.quantity*self.price
+class OrderItems(models.Model):
+    item=models.ForeignKey(Cloth,on_delete=models.SET_NULL,null=True)
+    order=models.ForeignKey(Order,on_delete=models.SET_NULL,null=True)
+    quantity=models.PositiveIntegerField(default=0,null=True,blank=False)
+    date_added=models.DateTimeField(auto_now_add=True)
+  
+    class Meta:
+        db_table = "OrderItems" 
+  
     
