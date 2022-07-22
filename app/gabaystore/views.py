@@ -11,6 +11,7 @@ def home(request):
 
     return render(request,'gabaystore/home.html')
 
+@login_required(login_url='loginPage')
 def cart(request):
     if request.user.is_authenticated:
         customer = request.user.customer
