@@ -26,6 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 import mimetypes
 mimetypes.add_type('text/javascript', '.js', True)
 mimetypes.add_type('text/html', '.html', True)
+mimetypes.add_type('text/html', '.js', True)
+mimetypes.add_type('application/javascript', '.js', True)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
@@ -33,9 +35,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # Configuração para o ambiente de produção
 DEBUG = str(os.getenv('DEBUG'))
 #
-
-
-
+ALLOWED_HOSTS = [str(os.getenv('ALLOWED_HOSTS'))]
 # Acessos permitidos para o ambiente de produção
 ALLOWED_HOSTS = ['localhost','django_upstream','127.0.0.1','0.0.0.0','django','[::1]','*','https://gabaystore.herokuapp.com','http://localhost:6379','http://localhost:8000','http://localhost:5353']
 
@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'django_filters',
     'fontawesomefree',
-    'defender',
+   # 'defender',
 ]
 
 MIDDLEWARE = [
@@ -66,7 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'defender.middleware.FailedLoginMiddleware',
+    #'defender.middleware.FailedLoginMiddleware',
 ]
 CSRF_TRUSTED_ORIGINS = [
     'https://gabaystore.herokuapp.com',
@@ -163,7 +163,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
 
 #Media files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #Crispy forms
