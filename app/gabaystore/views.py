@@ -11,6 +11,16 @@ def home(request):
 
     return render(request,'gabaystore/home.html')
 
+def cart(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order,created = customer.order.get_or_create(customer=customer, paid_status=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        
+    context={'items':items}
+    return render(request,'gabaystore/cart.html',context=context)
 
 @login_required(login_url='loginPage')
 @allowed_users(allowed_roles=['customer'])
