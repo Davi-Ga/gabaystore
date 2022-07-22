@@ -8,20 +8,23 @@
           <div class="card text-black" style="border-radius: 1rem;">
             <div class="card-body p-5 text-center">
               <div class="mb-md-5 mt-md-4 pb-5">
-                <img src="{{cloth.picture.url}}" class="card-img-top" alt="{{cloth.picture.url}}">
-                <b>
-                  <h5 class="card-title">{{cloth.name}}</h5>
-                </b>
-                <p class="card-text">Size:{{cloth.size}}</p>
-                <p class="card-text">Type:{{cloth.clothing_type}}</p>
-                <p class="card-text">Price: U${{cloth.price}}</p>
-                {% if not request.user.is_staff  %}
-                  <button class="btn btn-outline-dark btn-lg px-5" type="submit">Buy</button>
-                {% endif %}
-                {% if request.user.is_staff %}
-                  <a  href= "{% url 'updateClothPage' cloth.id %}"  class="btn btn-success"><i class='bx bx-edit-alt' ></i></a>
-                  <a href= "{% url 'deleteClothPage' cloth.id %}" class="btn btn-danger"><i class='bx bx-trash-alt' ></i></a>
-                {% endif %}
+                <img src="{{cloth.picture.url}}" class="card-img-top">
+                
+                  <b>
+                    <h5 class="card-title">{{cloth.name}}</h5>
+                  </b>
+                    <p class="card-text">Id:{{cloth.id}}</p>
+                    <p class="card-text">Size:{{cloth.size}}</p>
+                    <p class="card-text">Type:{{cloth.clothing_type}}</p>
+                    <p class="card-text">Price: U${{cloth.price}}</p>
+                    {% if not request.user.is_staff  %}
+                      <button data-product={{cloth.id}} data-action="add" class="btn btn-outline-dark btn-lg px-5 add-btn update-cart">Buy</button>
+                    {% endif %}
+                    {% if request.user.is_staff %}
+                      <a  href= "{% url 'updateClothPage' cloth.id %}"  class="btn btn-success"><i class='bx bx-edit-alt' ></i></a>
+                      <a href= "{% url 'deleteClothPage' cloth.id %}" class="btn btn-danger"><i class='bx bx-trash-alt' ></i></a>
+                    {% endif %}
+           
   
            
             
