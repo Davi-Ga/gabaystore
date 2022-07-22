@@ -52,13 +52,8 @@ def register(request):
             form=RegisterUserForm(request.POST)
             if form.is_valid():
                 user=form.save()
-                firstgroup=Cloth.objects.all()
-                if firstgroup is None:
-                    group = Group.objects.get(name='admin')
-                    user.groups.add(group)
-                else:  
-                    group = Group.objects.get(name='customer')
-                    user.groups.add(group)
+                group = Group.objects.get(name='customer')
+                user.groups.add(group)
                 return redirect('loginPage')
         context={
             'form':form
