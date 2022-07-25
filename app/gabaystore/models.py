@@ -29,9 +29,6 @@ class Cloth(models.Model):
     amount=models.PositiveIntegerField(null=False,validators=[MaxValueValidator(30),validate_quantity])
     slug= models.SlugField(max_length=200, null=True, blank=True, editable=False)
     
-    class Meta:
-        db_table = "Cloth" 
-    
     def __str__(self):
         return self.name
     
@@ -47,23 +44,20 @@ class Customer(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     email=models.EmailField(max_length=150,null=False,unique=True)
  
-    class Meta:
-        db_table = "Custumer" 
+
     
     def __str__(self):
         return self.user
 
     
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     total_price=models.DecimalField(max_digits=10, decimal_places=2,null=False,validators=[validate_price])
     date_order=models.DateTimeField(auto_now_add=True)
     paid_status=models.BooleanField(default=False,null=True,blank=False)
     transaction_id=models.CharField(max_length=200,null=True)
     
-    class Meta:
-        db_table = "CartOrder" 
-    
+
     def __str__(self):
         return str(self.id)
     
@@ -72,8 +66,6 @@ class OrderItems(models.Model):
     order=models.ForeignKey(Order,on_delete=models.SET_NULL,null=True)
     quantity=models.PositiveIntegerField(default=0,null=True,blank=False)
     date_added=models.DateTimeField(auto_now_add=True)
-  
-    class Meta:
-        db_table = "OrderItems" 
+
   
     
