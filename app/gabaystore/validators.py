@@ -60,4 +60,10 @@ def validate_name(value):
     else:
         return value
 
-
+def validate_email(value):
+    if value == '':
+        raise ValidationError('Email cannot be empty.')
+    if not re.match(r"[^@]+@[^@]+\.[^@]+", value):
+        raise ValidationError('Invalid email address.')
+    else:
+        return value
