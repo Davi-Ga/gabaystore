@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from .decorators import allowed_users,admin_only,unauthenticated_user
 from .forms import RegisterUserForm
-from .models import Cloth
 from .forms import ClothingForm
+from .models import Cloth
 
 def home(request):
 
