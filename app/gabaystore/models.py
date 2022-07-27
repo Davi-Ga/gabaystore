@@ -51,7 +51,7 @@ class Customer(models.Model):
 
     
 class Order(models.Model):
-    customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     total_price=models.DecimalField(max_digits=10, decimal_places=2,null=False,validators=[validate_price])
     date_order=models.DateTimeField(auto_now_add=True)
     paid_status=models.BooleanField(default=False,null=True,blank=False)
