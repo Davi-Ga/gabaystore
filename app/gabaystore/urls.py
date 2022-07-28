@@ -12,6 +12,7 @@ urlpatterns = [
     path('logout/',views.logoutUser,name='logoutPage'),
     path('profile/',views.profile,name='profilePage'),
     
+    path('cart/',views.cart,name='cartPage'),
     path('store/',views.store,name='storePage'),
     path('cloth_add/',views.clothing_add,name='addClothPage'),
     path('cloth_delete/<int:pk_cloth>',views.clothing_delete,name='deleteClothPage'),
