@@ -4,17 +4,17 @@
 {% load static %}
 {% block content %}
 <div class="row row-cols-1 row-cols-md-2 g-4">
-  {% for Cloth in clothes %}
+    {% for Cloth in clothes %}
  
-    <div class="col" style="width: 18rem;">
-      <div class="card">
-        <a href="{% url 'detailClothPage' Cloth.slug%}"><img src="{{Cloth.picture.url}}" class="card-img-top" alt="{{Cloth.picture.url}}" style="width: 16.4rem; height: 12.5rem;"></a>
-        <div class="card-body">
-          <h5 class="card-title">{{Cloth.name}}</h5>
-          <p class="card-text">USD$: {{Cloth.price}}</p>
+      <div class="col" style="width: 18rem;">
+        <div class="card">
+          <a href="{% url 'detailClothPage' Cloth.slug%}"><img src="{{Cloth.picture.url}}" class="card-img-top" alt="{{Cloth.picture.url}}" style="width: 16.4rem; height: 12.5rem;"></a>
+          <div class="card-body">
+            <h5 class="card-title">{{Cloth.name}}</h5>
+            <p class="card-text">USD$: {{Cloth.price}}</p>
+          </div>
         </div>
       </div>
-    </div>
     {% endfor %}
 
 {% endblock %}
