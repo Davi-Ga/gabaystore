@@ -29,7 +29,7 @@
                                     <i class='bx bx-chevron-down'></i>
                                 </div>
                             </div>
-                            <div style="flex:1">{{ item.cloth.price * item.cloth.quantity }}</div>
+                            <div style="flex:1">${{item.get_total}}</div>
                         </div>
                     {% endfor %}
 
