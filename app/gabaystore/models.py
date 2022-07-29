@@ -56,10 +56,21 @@ class Order(models.Model):
     date_order=models.DateTimeField(auto_now_add=True)
     paid_status=models.BooleanField(default=False,null=True,blank=False)
     transaction_id=models.CharField(max_length=200,null=True)
-    
 
     def __str__(self):
         return str(self.id)
+    
+    @property
+    def get_cart_total(self):
+        orderitems = self.orderitem_set.all()
+        total=sum([item.get_total for item in orderitems])
+        return total
+    
+    @property
+    def get_cart_items(self):
+        orderitems = self.orderitem_set.all()
+        total=sum([item.quantity for item in orderitems])
+        return total
     
 class OrderItems(models.Model):
     item=models.ForeignKey(Cloth,on_delete=models.SET_NULL,null=True)
@@ -67,5 +78,9 @@ class OrderItems(models.Model):
     quantity=models.PositiveIntegerField(default=0,null=True,blank=False)
     date_added=models.DateTimeField(auto_now_add=True)
 
+    @property
+    def get_total(self):
+        total=self.item.price*self.quantity
+        return total
   
     
