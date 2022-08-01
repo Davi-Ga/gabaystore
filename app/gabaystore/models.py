@@ -22,7 +22,7 @@ TYPES_CHOICES=[
 
 class Cloth(models.Model):
     name=models.CharField(max_length=150,null=False,unique=True,validators=[validate_name])
-    picture=models.ImageField(upload_to='media/',null=False,blank=False,validators=[validate_file_name,validate_file_extension_and_size])
+    picture=models.ImageField(upload_to='media',null=False,blank=False,validators=[validate_file_name,validate_file_extension_and_size])
     size=models.CharField(max_length=2,null=False,choices=SIZE_CHOICES,validators=[validate_size])
     clothing_type=models.CharField(max_length=20,null=False,choices=TYPES_CHOICES,validators=[validate_clothing_type])
     price= models.DecimalField(max_digits=10, decimal_places=2,null=False,validators=[validate_price])
@@ -40,18 +40,17 @@ class Cloth(models.Model):
             url = ''
         return url
     
-class Customer(models.Model):
-    user=models.OneToOneField(User,on_delete=models.CASCADE)
-    email=models.EmailField(max_length=150,null=False,unique=True)
- 
-
+    def get_absolute_url(self):
+        return reverse("gabaystore:detailClothPage", args=self.id)
     
-    def __str__(self):
-        return self.user
-
+def cloth_pre_save(sender, instance, signal, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(instance.name)
+signals.pre_save.connect(cloth_pre_save, sender=Cloth)
+    
     
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     total_price=models.DecimalField(max_digits=10, decimal_places=2,null=False,validators=[validate_price])
     date_order=models.DateTimeField(auto_now_add=True)
     paid_status=models.BooleanField(default=False,null=True,blank=False)
