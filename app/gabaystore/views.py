@@ -54,7 +54,6 @@ def logoutUser(request):
     return redirect('homePage')
 
 
-@unauthenticated_user
 def register(request):
     if request.user.is_authenticated:
        return redirect('homePage')
@@ -101,7 +100,7 @@ def clothing_delete(request,pk_cloth):
     pk_cloth=int(pk_cloth)
     cloth=Cloth.objects.get(id=pk_cloth)
     cloth.delete()
-    return redirect('homePage')
+    return redirect('storePage')
 
 
 @login_required(login_url='loginPage')
@@ -114,7 +113,7 @@ def clothing_update(request,pk_cloth):
         form=ClothingForm(request.POST,request.FILES,instance=cloth)
         if form.is_valid():
             form.save()
-            return redirect('homePage')
+            return redirect('storePage')
     context={
         'form':form
     }
