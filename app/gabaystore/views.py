@@ -6,6 +6,8 @@ from .decorators import allowed_users,admin_only,unauthenticated_user
 from .forms import RegisterUserForm
 from .forms import ClothingForm
 from .models import Cloth
+from .models import OrderItem,Order
+from django.contrib.auth.models import User
 
 def home(request):
 
@@ -16,7 +18,7 @@ def home(request):
 def cart(request):
     if request.user.is_authenticated:
         customer = request.user.customer
-        order,created = customer.order.get_or_create(customer=customer, paid_status=False)
+        order,created = Order.objects.get_or_create(customer=customer, paid_status=False)
         items = order.orderitem_set.all()
     else:
         items = []
@@ -63,7 +65,7 @@ def register(request):
             form=RegisterUserForm(request.POST)
             if form.is_valid():
                 user=form.save()
-                group = Group.objects.get(name='customer')
+                group = Group.objects.get_or_create(name='customer')
                 user.groups.add(group)
                 return redirect('loginPage')
         context={
