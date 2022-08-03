@@ -17,7 +17,7 @@ def home(request):
 @allowed_users(allowed_roles=['customer'])
 def cart(request):
     if request.user.is_authenticated:
-        customer = request.user.customer
+        customer = request.user
         order,created = Order.objects.get_or_create(customer=customer, paid_status=False)
         items = order.orderitem_set.all()
     else:
