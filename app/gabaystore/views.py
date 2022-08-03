@@ -22,8 +22,12 @@ def cart(request):
         items = order.orderitem_set.all()
     else:
         items = []
+        order = {'get_cart_total':0,'get_cart_items':0}
         
-    context={'items':items}
+    context={
+        'items':items, 
+        'order':order
+    }
     return render(request,'gabaystore/cart.html',context=context)
 
 @login_required(login_url='loginPage')
