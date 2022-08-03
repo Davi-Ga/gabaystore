@@ -1,45 +1,57 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<section class="vh-100 gradient-custom">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card text-black" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
-              <div class="mb-md-5 mt-md-4 pb-5">
-                <div class="box-element">
-                    <div class="cart-row">
-                        <div style="flex:2"></div>
-                        <div style="flex:2"><strong>Item</strong></div>
-                        <div style="flex:1"><strong>Price</strong></div>
-                        <div style="flex:1"><strong>Quantity</strong></div>
-                        <div style="flex:1"><strong>Total</strong></div>
-
-                    </div>
-                    {% for item in items %}
-                        <div class="cart-row">
-                            <div style="flex:2"><img class="row-image" src="{{item.cloth.imageURL}}"></div>
-                            <div style="flex:2"><p>{{ item.cloth.name }}</p></div>
-                            <div style="flex:1"><p>${{ item.cloth.price|floatformat:2 }}</p></div>
-                            <div style="flex:1">
-                                <p class="quantity">x{{ item.quantity }}</p>
-                                <div class="quantity">
-                                    <i class='bx bx-chevron-up'></i>
-                                    <i class='bx bx-chevron-down'></i>
-                                </div>
-                            </div>
-                            <div style="flex:1">${{item.get_total}}</div>
-                        </div>
-                    {% endfor %}
-
-                </div>
-            
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<div class="card">
+  <div class="row">
+      <div class="col-md-8 cart">
+        {% for item in items %}
+          <div class="title">
+              <div class="row">
+                  <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                  <div class="col align-self-center text-right text-muted">{{item.quantity}} items</div>
               </div>
+          </div> 
+          <div class="row border-top border-bottom">
+            <div class="row main align-items-center">
+              <div class="col-2"><img class="img-fluid" src="{{item.cloth.imageURL}}"></div>
+              <div class="col">
+                <div class="row ">{{item.cloth.name}}</div>
+                <div class="row text-muted">{{ item.cloth.clothing_type }}</div>
+              </div>
+              <div class="col">
+                <a href="#">-</a><a href="#" class="border">{{item.quantity}}</a><a href="#">+</a>
+              </div>
+              <div class="col">R$ {{item.cloth.price}}<span class="close"><i class="bi bi-x-lg"></i></span></div>
             </div>
           </div>
+          
+          
+          <div class="back-to-shop"><a href="{% url 'storePage' %}">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
         </div>
+        <div class="col-md-4 summary">
+          <div><h5><b>Summary</b></h5></div>
+          <hr>
+          <div class="row">
+            <div class="col" style="padding-left:0;">ITEMS: {{item.quantity}}</div>
+            <div class="col text-right">R$ {{item.get_total}}</div>
+          </div>
+          {% endfor %}   
+          <form>
+              <p>SHIPPING:</p>
+              <select>
+                <option class="text-muted">Entrega-Básica- R$ 10,00</option>
+                <option class="text-muted">Entrega-Express- R$ 25,00</option>
+              </select>
+             
+          </form>
+          <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+              <div class="col">TOTAL PRICE</div>
+              <div class="col text-right">&euro; 137.00</div>
+          </div>
+          <button class="btn">CHECKOUT</button>
       </div>
-    </div>
-  </section>
+  </div>
+  
+</div>
 {% endblock %}
