@@ -6,51 +6,48 @@
   <div class="row">
       <div class="col-md-8 cart">
         {% for item in items %}
-          <div class="title">
-              <div class="row">
-                  <div class="col"><h4><b>Shopping Cart</b></h4></div>
-                  <div class="col align-self-center text-right text-muted">{{item.quantity}} items</div>
+            <div class="title">
+                <div class="row">
+                    <div class="col"><h4><b>Carrinho de Compras</b></h4></div>
+                    <div class="col align-self-center text-right text-muted">{{order.get_cart_items}} items</div>
+                </div>
+            </div> 
+            <div class="row border-top border-bottom">
+              <div class="row main align-items-center">
+                <div class="col-2"><img class="img-fluid" src="{{item.cloth.imageURL}}"></div>
+                <div class="col">
+                  <div class="row ">{{item.cloth.name}}</div>
+                  <div class="row text-muted">{{ item.cloth.clothing_type }}</div>
+                </div>
+                <div class="col">
+                  <a href="#">-</a><a href="#" class="border">{{item.quantity}}</a><a href="#">+</a>
+                </div>
+                <div class="col">R$ {{item.get_total}}<span class="close"><i class="bi bi-x-lg"></i></span></div>
               </div>
-          </div> 
-          <div class="row border-top border-bottom">
-            <div class="row main align-items-center">
-              <div class="col-2"><img class="img-fluid" src="{{item.cloth.imageURL}}"></div>
-              <div class="col">
-                <div class="row ">{{item.cloth.name}}</div>
-                <div class="row text-muted">{{ item.cloth.clothing_type }}</div>
-              </div>
-              <div class="col">
-                <a href="#">-</a><a href="#" class="border">{{item.quantity}}</a><a href="#">+</a>
-              </div>
-              <div class="col">R$ {{item.cloth.price}}<span class="close"><i class="bi bi-x-lg"></i></span></div>
             </div>
+            
+            
+            <div class="back-to-shop"><a href="{% url 'storePage' %}">&leftarrow;</a><span class="text-muted">Voltar para as compras</span></div>
           </div>
-          
-          
-          <div class="back-to-shop"><a href="{% url 'storePage' %}">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
-        </div>
-        <div class="col-md-4 summary">
-          <div><h5><b>Summary</b></h5></div>
-          <hr>
-          <div class="row">
-            <div class="col" style="padding-left:0;">ITEMS: {{item.quantity}}</div>
-            <div class="col text-right">R$ {{item.get_total}}</div>
-          </div>
+          <div class="col-md-4 summary">
+            <div><h5><b>Sumário</b></h5></div>
+            <hr>
+            <div class="row">
+              <div class="col" style="padding-left:0;">ITEMS: {{order.get_cart_items}}</div>
+              <div class="col text-right">R$ {{order.get_cart_total}}</div>
+            </div>
+            <form>
+              <p>CÓDIGO PROMOCIONAL</p>
+              <input id="code" placeholder="Enter your code">
+              
+            </form>
+            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+              <div class="col">PREÇO TOTAL:</div>
+              <div class="col text-right">R$ {{order.get_cart_total}}</div>
+            </div>
+            <button class="btn">CONCLUIR</button>
           {% endfor %}   
-          <form>
-              <p>SHIPPING:</p>
-              <select>
-                <option class="text-muted">Entrega-Básica- R$ 10,00</option>
-                <option class="text-muted">Entrega-Express- R$ 25,00</option>
-              </select>
-             
-          </form>
-          <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-              <div class="col">TOTAL PRICE</div>
-              <div class="col text-right">&euro; 137.00</div>
-          </div>
-          <button class="btn">CHECKOUT</button>
-      </div>
+        </div>
   </div>
   
 </div>
