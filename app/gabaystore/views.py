@@ -13,8 +13,26 @@ from django.contrib.auth.models import User
 import json
 
 def home(request):
-
-    return render(request,'gabaystore/home.html')
+    
+    if request.user.is_authenticated:
+        customer = request.user
+        order,created = Order.objects.get_or_create(customer=customer, paid_status=False)
+        items = order.orderitem_set.all()
+        cartItems=order.get_cart_items
+    else:
+        items = []
+        order={'get_cart_total':0,'get_cart_items':0}
+        cartItems = order['get_cart_items']
+        
+    context={
+        'items':items,
+        'order':order,
+        'cartItems':cartItems
+    }
+    return render(request,'gabaystore/home.html',context)
+   
+    
+    
 
 @login_required(login_url='loginPage')
 @allowed_users(allowed_roles=['customer'])
@@ -23,13 +41,16 @@ def cart(request):
         customer = request.user
         order,created = Order.objects.get_or_create(customer=customer, paid_status=False)
         items = order.orderitem_set.all()
+        cartItems=order.get_cart_items
     else:
         items = []
         order = {'get_cart_total':0,'get_cart_items':0}
+        cartItems = order['get_cart_items']
         
     context={
         'items':items, 
-        'order':order
+        'order':order,
+        'cartItems':cartItems
     }
     return render(request,'gabaystore/cart.html',context=context)
 
@@ -103,11 +124,24 @@ def register(request):
             'form':form
         }
         return render(request,'user/register.html',context=context)
-    
+        
 def store(request):
+    
+    if request.user.is_authenticated:
+        customer = request.user
+        order,created = Order.objects.get_or_create(customer=customer, paid_status=False)
+        items = order.orderitem_set.all()
+        cartItems=order.get_cart_items
+    
+    else:
+        items = []
+        order={'get_cart_total':0,'get_cart_items':0}
+        cartItems = order['get_cart_items']
+    
     clothes=Cloth.objects.all()
     context={
-        'clothes':clothes
+        'clothes':clothes,
+        'cartItems':cartItems
     }
     return render(request,'gabaystore/store.html',context=context)
 
@@ -155,10 +189,25 @@ def clothing_update(request,pk_cloth):
 
 def clothing_detail(request,slug=None):
     cloth = None
+    
+    if request.user.is_authenticated:
+        customer = request.user
+        order,created = Order.objects.get_or_create(customer=customer, paid_status=False)
+        items = order.orderitem_set.all()
+        cartItems=order.get_cart_items
+    else:
+        items = []
+        order={'get_cart_total':0,'get_cart_items':0}
+        cartItems = order['get_cart_items']
+        
    # pk_cloth=int(pk_cloth)
     if slug is not None:
         cloth = Cloth.objects.get(slug=slug)
+    
     context={
+        'items':items,
+        'order':order,
+        'cartItems':cartItems,
         'cloth':cloth
     }
     return render(request,'gabaystore/cloth_detail.html',context=context)
