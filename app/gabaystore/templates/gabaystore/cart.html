@@ -21,7 +21,12 @@
                   <div class="row text-muted">{{ item.cloth.clothing_type }}</div>
                 </div>
                 <div class="col">
-                  <a href="#">-</a><a href="#" class="border">{{item.quantity}}</a><a href="#">+</a>
+                  <div class="quantity">
+
+                    <a data-product="{{item.cloth.id}}" data-action="remove" class="chg-quantity update-cart" href="" >-</a>
+                      <a href="#" class="border">{{item.quantity}}</a>
+                    <a data-product="{{item.cloth.id}}" data-action="add" class="chg-quantity update-cart" href="" >+</a>
+                  </div>
                 </div>
                 <div class="col">R$ {{item.get_total}}<span class="close"><i class="bi bi-x-lg"></i></span></div>
               </div>
