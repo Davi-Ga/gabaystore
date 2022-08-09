@@ -14,14 +14,7 @@
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
       </div>
-      {% if user.is_authenticated %}
-        <div class="header_img">
-          <a href="#" >
-              <i class="bx bx-user nav_icon"></i>
-              
-            </a>
-        </div>
-      {% endif %}
+
     </header>
     <div class="l-navbar" id="nav-bar">
       <nav class="nav">
@@ -43,10 +36,25 @@
               <i class="bx bx-message-square-detail nav_icon"></i>
               <span class="nav_name">About</span>
             </a>
+
+            {% if request.user.is_staff %}
             <a href="#" class="nav_link">
-              <i class="bx bx-phone nav_icon"></i>
-              <span class="nav_name">Contact</span>
+              <i class="bx bx-message-square-detail nav_icon"></i>
+    
+                <span class="nav_name">Pedidos</span>
+          
             </a>
+            {% endif %}
+
+            {% if not request.user.is_staff and user.is_authenticated %}
+              <a href="{% url 'cartPage' %}" class="nav_link">
+                <i class="bx bx-cart"></i>
+                <span id='notif' class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-dark">{{cartItems}}</span>
+                  <span class="nav_name">Carrinho</span>
+                
+              </a>
+            {% endif %}
+
             
           </div>
         </div>
