@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 body{
   background: rgb(209, 209, 209);
-  min-height: 100vh;
-
-  display: flex;
   font-family: sans-serif;
   font-size: 0.8rem;
   font-weight: bold;
