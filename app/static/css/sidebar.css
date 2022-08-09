@@ -168,7 +168,7 @@ body {
     padding-left: calc(var(--nav-width) + 188px);
 }}
 
-#notif{
-    background-color: #00ff95;
+#notif .badge{
+    width: 50px;
     
 }
