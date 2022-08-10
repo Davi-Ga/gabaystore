@@ -101,6 +101,14 @@ def updateItem(request):
 def profile(request):
     return render(request,'gabaystore/profile.html')
 
+@admin_only
+def orders(request):
+    orders=Order.objects.all()
+    context={
+        'orders':orders
+    }
+    return render(request,'gabaystore/orders.html',context=context)
+
 @unauthenticated_user
 def loginUser(request):
     if request.user.is_authenticated:
