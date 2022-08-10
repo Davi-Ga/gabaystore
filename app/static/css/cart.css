@@ -115,8 +115,8 @@ input:focus::-webkit-input-placeholder
       color:transparent;
 }
 .btn{
-    background-color: #000;
-    border-color: #000;
+    background-color: #0c2c3c;
+    border-color: #0c2c3c;
     color: white;
     width: 100%;
     font-size: 0.7rem;
@@ -134,7 +134,8 @@ input:focus::-webkit-input-placeholder
     transition: none; 
 }
 .btn:hover{
-    color: white;
+    color: #0c2c3c;
+    background-color: white;
 }
 a{
     color: black; 
