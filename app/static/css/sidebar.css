@@ -19,8 +19,8 @@ background: #555;
 :root {
 --header-height: 3rem;
 --nav-width: 68px;
---first-color: #4723d9;
---first-color-light: #afa5d9;
+--first-color: #0c2c3c;
+--first-color-light: #6797ad;
 --white-color: #f7f6fb;
 --body-font: "Nunito", sans-serif;
 --normal-font-size: 1rem;
@@ -168,7 +168,7 @@ body {
     padding-left: calc(var(--nav-width) + 188px);
 }}
 
-#notif .badge{
-    width: 50px;
-    
+i.bx-cart{
+    font-size: 20px;
+    left: 140px;
 }
