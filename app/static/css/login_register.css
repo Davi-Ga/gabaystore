@@ -6,3 +6,21 @@
     border-radius: 1rem;
     border: transparent;
 }
+
+.form-control:focus{
+   border-color: #0c2c3c;
+   box-shadow: 0 0 0 0.25rem rgb(12 44 60 / 25%);
+}
+
+
+.btn{
+    background-color: #0c2c3c;
+    border-color: #0c2c3c;
+    color:#fff
+}
+
+.btn:hover{
+    background-color: #fff;
+    border-color: #0c2c3c;
+    color:#0c2c3c
+}
