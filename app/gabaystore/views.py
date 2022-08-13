@@ -101,6 +101,7 @@ def updateItem(request):
 def profile(request):
     return render(request,'gabaystore/profile.html')
 
+@login_required(login_url='loginPage')
 @admin_only
 def orders(request):
     orders=Order.objects.all()
