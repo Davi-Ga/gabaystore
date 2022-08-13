@@ -26,18 +26,18 @@
           <div class="nav_list">
             <a href="{% url 'homePage' %}" class="nav_link active">
               <i class='bx bx-home-alt-2 nav_icon'></i>
-              <span class="nav_name">Início</span>
+              <span class="nav_name">Home</span>
             </a>
             <a href="{% url 'storePage' %}" class="nav_link">
               <i class='bx bx-store-alt nav_icon' ></i>
-              <span class="nav_name">Loja</span>
+              <span class="nav_name">Store</span>
             </a>
 
             {% if request.user.is_staff %}
             <a href="#" class="nav_link">
               <i class="bx bx-message-square-detail nav_icon"></i>
     
-                <span class="nav_name">Pedidos</span>
+                <span class="nav_name">Orders</span>
           
             </a>
             {% endif %}
@@ -46,7 +46,7 @@
               <a href="{% url 'cartPage' %}" class="nav_link">
                 <i class="bx bx-cart"></i>
                 <span id='notif' class="position-absolute top-0 end-50 translate-middle badge rounded-pill bg-light text-dark">{{cartItems}}</span>
-                  <span class="nav_name">Carrinho</span>
+                  <span class="nav_name">Cart</span>
                 
               </a>
             {% endif %}
