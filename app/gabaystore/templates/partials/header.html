@@ -34,8 +34,8 @@
             </a>
 
             {% if request.user.is_staff %}
-            <a href="#" class="nav_link">
-              <i class="bx bx-message-square-detail nav_icon"></i>
+            <a href="{% url 'ordersPage' %}" class="nav_link">
+              <i class="bx bx-list-ul nav_icon"></i>
     
                 <span class="nav_name">Orders</span>
           
