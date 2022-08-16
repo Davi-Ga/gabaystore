@@ -6,17 +6,17 @@
 <div class="card">
   <div class="row">
       <div class="col-md-8 cart">
+        <div class="title">
+          <div class="row">
+            <div class="col"><h4><b>Cart</b></h4></div>
+            <div class="col align-self-center text-right text-muted">{{order.get_cart_items}} items</div>
+          </div>
+        </div> 
         {% for item in items %}
-            <div class="title">
-                <div class="row">
-                    <div class="col"><h4><b>Cart</b></h4></div>
-                    <div class="col align-self-center text-right text-muted">{{order.get_cart_items}} items</div>
-                </div>
-            </div> 
-            <div class="row border-top border-bottom">
-              <div class="row main align-items-center">
-                <div class="col-2"><img class="img-fluid" src="{{item.cloth.imageURL}}"></div>
-                <div class="col">
+        <div class="row border-top border-bottom">
+          <div class="row main align-items-center">
+            <div class="col-2"><img class="img-fluid" src="{{item.cloth.imageURL}}"></div>
+            <div class="col">
                   <div class="row ">{{item.cloth.name}}</div>
                   <div class="row text-muted">{{ item.cloth.clothing_type }}</div>
                 </div>
@@ -24,13 +24,14 @@
                   <div class="quantity">
 
                     <a data-product="{{item.cloth.id}}" data-action="remove" class="chg-quantity update-cart" href="" >-</a>
-                      <a href="#" class="border">{{item.quantity}}</a>
+                    <a href="#" class="border">{{item.quantity}}</a>
                     <a data-product="{{item.cloth.id}}" data-action="add" class="chg-quantity update-cart" href="" >+</a>
                   </div>
                 </div>
                 <div class="col">R$ {{item.get_total}}<span class="close"><i class="bi bi-x-lg"></i></span></div>
               </div>
             </div>
+            {% endfor %}   
             
             
             <div class="back-to-shop"><a href="{% url 'storePage' %}">&leftarrow;</a><span class="text-muted">Voltar para as compras</span></div>
@@ -52,7 +53,6 @@
               <div class="col text-right">R$ {{order.get_cart_total}}</div>
             </div>
             <button class="btn">CONCLUIR</button>
-          {% endfor %}   
         </div>
   </div>
   
