@@ -9,9 +9,8 @@ from .forms import RegisterUserForm
 from .forms import ClothingForm
 from .models import Cloth
 from .models import OrderItem,Order
-from django.contrib.auth.models import User
 import json
-import datetime
+from django.contrib import messages
 
 def home(request):
     
@@ -125,7 +124,8 @@ def loginUser(request):
                 login(request,user)
                 return redirect('homePage')
             else:
-                return #Error mensage
+                messages.error(request,'username or password not correct')
+                return redirect('loginPage')
             
         context={}
         return render(request,'user/login.html',context=context)
@@ -135,7 +135,7 @@ def logoutUser(request):
     logout(request)
     return redirect('homePage')
 
-
+@unauthenticated_user
 def register(request):
     if request.user.is_authenticated:
        return redirect('homePage')
