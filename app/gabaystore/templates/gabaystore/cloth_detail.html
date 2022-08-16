@@ -1,41 +1,116 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/detail.css' %}" />
 <title>{{cloth.name}}</title>
-<section class="vh-100 gradient-custom">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card text-black" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
-              <div class="mb-md-5 mt-md-4 pb-5">
-                <img src="{{cloth.picture.url}}" class="card-img-top">
-                
-                  <b>
-                    <h5 class="card-title">{{cloth.name}}</h5>
-                  </b>
-                    <p class="card-text">Id:{{cloth.id}}</p>
-                    <p class="card-text">Size:{{cloth.size}}</p>
-                    <p class="card-text">Type:{{cloth.clothing_type}}</p>
-                    <p class="card-text">Price: U${{cloth.price}}</p>
-                    {% if not request.user.is_staff  %}
-                      <button data-product={{cloth.id}} data-action="add" class="btn btn-outline-dark btn-lg px-5 add-btn update-cart">Buy</button>
-                    {% endif %}
-                    {% if request.user.is_staff %}
-                      <a  href= "{% url 'updateClothPage' cloth.id %}"  class="btn btn-success"><i class='bx bx-edit-alt' ></i></a>
-                      <a href= "{% url 'deleteClothPage' cloth.id %}" class="btn btn-danger"><i class='bx bx-trash-alt' ></i></a>
-                    {% endif %}
-           
-  
-           
-            
-              </div>
+<div class="container mt-5 mb-5">
+  <div class="card">
+    <div class="row g-0">
+      <div class="col-md-6 border-end">
+        <div class="d-flex flex-column justify-content-center">
+          <div class="main_image">
+            <img
+              src="https://i.imgur.com/TAzli1U.jpg"
+              id="main_product_image"
+              width="350"
+            />
+          </div>
+          <div class="thumbnail_images">
+            <ul id="thumbnail">
+              <li>
+                <img
+                  onclick="changeImage(this)"
+                  src="https://i.imgur.com/TAzli1U.jpg"
+                  width="70"
+                />
+              </li>
+              <li>
+                <img
+                  onclick="changeImage(this)"
+                  src="https://i.imgur.com/w6kEctd.jpg"
+                  width="70"
+                />
+              </li>
+              <li>
+                <img
+                  onclick="changeImage(this)"
+                  src="https://i.imgur.com/L7hFD8X.jpg"
+                  width="70"
+                />
+              </li>
+              <li>
+                <img
+                  onclick="changeImage(this)"
+                  src="https://i.imgur.com/6ZufmNS.jpg"
+                  width="70"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 right-side">
+          <div class="d-flex justify-content-between align-items-center">
+            <h3>{{cloth.name}}</h3>
+            <span class="heart"><i class="bx bx-heart"></i></span>
+          </div>
+          <div class="mt-2 pr-3 content">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua
+            </p>
+          </div>
+          <h3>{{cloth.price}}</h3>
+         
+          <div class="mt-5">
+            <span class="fw-bold">Color</span>
+            <div class="colors">
+              <ul id="marker">
+                <li id="marker-1"></li>
+                <li id="marker-2"></li>
+                <li id="marker-3"></li>
+                <li id="marker-4"></li>
+                <li id="marker-5"></li>
+              </ul>
             </div>
+          </div>
+          <div class="buttons d-flex flex-row mt-5 gap-3">
+            {% if not user.is_staff %}
+            
+              <button data-product="{{cloth.id}}" data-action="add" class="btn btn-outline-dark">Buy Now</button>
+            {% endif %}
+
+            {% if request.user.is_staff %}
+              <a href="{% url 'updateClothPage' cloth.id %}" class="btn btn-success">
+                <i class="bx bx-edit-alt"></i>
+              </a>
+              <a href="{% url 'deleteClothPage' cloth.id %}" class="btn btn-danger">
+                <i class="bx bx-trash-alt"></i>
+            </a>
+            {% endif %}
+          </div>
+          <div class="search-option">
+            <i class="bx bx-search-alt-2 first-search"></i>
+            <div class="inputs"><input type="text" name="" /></div>
+            <i class="bx bx-share-alt share"></i>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-{% endblock %}
+{% endblock %} 
+{% if not request.user.is_staff %}
+<button
+  data-product="{{cloth.id}}"
+  data-action="add"
+  class="btn btn-outline-dark btn-lg px-5 add-btn update-cart">Buy
+</button>
+{% endif %} {% if request.user.is_staff %}
+<a href="{% url 'updateClothPage' cloth.id %}" class="btn btn-success"
+  ><i class="bx bx-edit-alt"></i
+></a>
+<a href="{% url 'deleteClothPage' cloth.id %}" class="btn btn-danger"
+  ><i class="bx bx-trash-alt"></i
+></a>
+{% endif %}
