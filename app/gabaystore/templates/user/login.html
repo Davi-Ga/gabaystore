@@ -32,8 +32,13 @@
                         </div>
                     </div>
                 </div>
-                {% for k,v in form.errors.items %}
-                  {{v}}
+                {% for message in messages %}
+    
+                    <div class="alert alert-danger">
+                        <a class="close" href="{% url 'loginPage' %}" data-dismiss="alert">×</a>
+                          {{ message }}
+                    </div>
+
                 {% endfor %}
 
                 <p class="small mb-5 pb-lg-2"><a class="text-black-50" href="#!"></a></p>
