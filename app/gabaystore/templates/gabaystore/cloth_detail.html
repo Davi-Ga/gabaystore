@@ -31,17 +31,9 @@
           <h3>{{cloth.price}}</h3>
          
           <div class="mt-5">
-            <span class="fw-bold">Color</span>
-            <div class="colors">
-              <ul id="marker">
-                <li id="marker-1"></li>
-                <li id="marker-2"></li>
-                <li id="marker-3"></li>
-                <li id="marker-4"></li>
-                <li id="marker-5"></li>
-              </ul>
-            </div>
+           
           </div>
+
           <div class="buttons d-flex flex-row mt-5 gap-3">
             {% if not user.is_staff %}
             
@@ -69,17 +61,3 @@
 </div>
 
 {% endblock %} 
-{% if not request.user.is_staff %}
-<button
-  data-product="{{cloth.id}}"
-  data-action="add"
-  class="btn btn-outline-dark btn-lg px-5 add-btn update-cart">Buy
-</button>
-{% endif %} {% if request.user.is_staff %}
-<a href="{% url 'updateClothPage' cloth.id %}" class="btn btn-success"
-  ><i class="bx bx-edit-alt"></i
-></a>
-<a href="{% url 'deleteClothPage' cloth.id %}" class="btn btn-danger"
-  ><i class="bx bx-trash-alt"></i
-></a>
-{% endif %}
