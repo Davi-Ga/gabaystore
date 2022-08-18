@@ -4,56 +4,58 @@
 <div class="container mt-5 mb-5">
   <div class="card">
     <div class="row g-0">
-      <div class="col-md-6 border-end">
+      <div class="col-md-4 border-end">
         <div class="d-flex flex-column justify-content-center">
           <div class="main_image">
             <img
-              src="https://i.imgur.com/TAzli1U.jpg"
+              src="{{cloth.imageURL}}"
               id="main_product_image"
-              width="350"
+              width="250"
             />
           </div>
           
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="p-3 right-side">
+      <div class="col-md-8">
+        <div class="p-2 right-side">
           <div class="d-flex justify-content-between align-items-center">
+            <br>
             <h3>{{cloth.name}}</h3>
-            <span class="heart"><i class="bx bx-heart"></i></span>
+          
+            <a href=""><span class="heart"><i class="bx bx-heart"></i></span></a>
           </div>
           <div class="mt-2 pr-3 content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
-            </p>
-          </div>
-          <h3>{{cloth.price}}</h3>
+            <p><b>Size:</b> {{cloth.size}}</p>
+            <br>
+            <p><b>Type:</b> {{cloth.clothing_type}}</p>
          
-          <div class="mt-5">
+          </div>
+          <br>
+         
+          <h5>$ {{cloth.price}}</h5>
+         
+          <div class="mt-10">
            
           </div>
-
-          <div class="buttons d-flex flex-row mt-5 gap-3">
+          
+          <div class="buttons d-flex flex-row mt-5 gap-5">
             {% if not user.is_staff %}
             
-              <button data-product="{{cloth.id}}" data-action="add" class="btn btn-outline-dark">Buy Now</button>
+              <button data-product="{{cloth.id}}" data-action="add" class="btn">Buy Now</button>
             {% endif %}
 
             {% if request.user.is_staff %}
-              <a href="{% url 'updateClothPage' cloth.id %}" class="btn btn-success">
-                <i class="bx bx-edit-alt"></i>
-              </a>
-              <a href="{% url 'deleteClothPage' cloth.id %}" class="btn btn-danger">
+              
+                <a href="{% url 'updateClothPage' cloth.id %}" class="btn">
+                  <i class="bx bx-edit-alt"></i>
+                </a>
+              
+              <a href="{% url 'deleteClothPage' cloth.id %}" class="btn">
                 <i class="bx bx-trash-alt"></i>
             </a>
             {% endif %}
           </div>
-          <div class="search-option">
-            <i class="bx bx-search-alt-2 first-search"></i>
-            <div class="inputs"><input type="text" name="" /></div>
-            <i class="bx bx-share-alt share"></i>
-          </div>
+        
         </div>
       </div>
     </div>
