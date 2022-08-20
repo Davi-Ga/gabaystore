@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/confighome.css' %}">
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
-<link rel="stylesheet" href="{% static 'css/confighome.css' %}">
 <title>Home</title>
 
-{% block content %}
 
  <!-- Modal -->
  <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -28,14 +28,15 @@
 
 
 <!-- Start Banner Hero -->
-<div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
+<section class="bg-dark">
+    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
@@ -45,7 +46,7 @@
                         <div class="text-align-left align-self-center">
                             <h1 class="h1 text-success"><b>Gabay</b>Store</h1>
                             <h3 class="h2">Tiny and Perfect eCommerce Template</h3>
-                            <p>
+                            <p class="ptest">
                                 Zay Shop is an eCommerce HTML5 CSS template with latest version of Bootstrap 5 (beta 1). 
                                 This template is 100% free provided by <a rel="sponsored" class="text-success" href="https://templatemo.com" target="_blank">TemplateMo</a> website. 
                                 Image credits go to <a rel="sponsored" class="text-success" href="https://stories.freepik.com/" target="_blank">Freepik Stories</a>,
@@ -61,7 +62,7 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="./assets/img/banner_img_02.jpg" alt="">
+                        <img class="img-fluid" src="{% static '/img/banner2.jpg' %}" alt="">
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
@@ -80,7 +81,7 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="./assets/img/banner_img_03.jpg" alt="">
+                        <img class="img-fluid" src="{% static '/img/banner3.jpg' %}" alt="">
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
@@ -96,13 +97,14 @@
             </div>
         </div>
     </div>
-    <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
-        <i class="fas fa-chevron-left"></i>
+    <a class="carousel-control-prev text-decoration-none w-auto ps-3 carouselcolor" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
+        <i class='bx bxs-chevron-left'></i>
     </a>
-    <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
-        <i class="fas fa-chevron-right"></i>
+    <a class="carousel-control-next text-decoration-none w-auto pe-3 carouselcolor" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
+        <i class='bx bxs-chevron-right'></i>
     </a>
 </div>
+</section>
 <!-- End Banner Hero -->
 
 
@@ -112,25 +114,24 @@
         <div class="col-lg-6 m-auto">
             <h1 class="h1">Categories of The Month</h1>
             <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
+                In this section we have the most searched categories in our site.
             </p>
         </div>
     </div>
     <div class="row">
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="./assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
-            <h5 class="text-center mt-3 mb-3">Watches</h5>
+            <a href="{% url 'storePage' %}"><img src="./assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
+            <h5 class="text-center mt-3 mb-3">Hoodies</h5>
             <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="./assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Shoes</h2>
+            <a href="{% url 'storePage' %}"><img src="./assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
+            <h2 class="h5 text-center mt-3 mb-3">T-Shirts</h2>
             <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
         </div>
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="./assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Accessories</h2>
+            <a href="{% url 'storePage' %}"><img src="./assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a>
+            <h2 class="h5 text-center mt-3 mb-3">Shirts</h2>
             <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
         </div>
     </div>
@@ -143,10 +144,9 @@
     <div class="container py-5">
         <div class="row text-center py-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Featured Product</h1>
+                <h1 class="h1">Featured Products</h1>
                 <p>
-                    Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident.
+                    Our products that deserve a little of your attention.
                 </p>
             </div>
         </div>
