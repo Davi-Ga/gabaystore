@@ -31,7 +31,7 @@ Table of contents
 /* Typography */
 body, ul, li, p, a, label, input, div {
     font-family: 'Roboto', sans-serif;
-    font-size: 18px !important;
+    font-size: 16px !important;
     font-weight: 300 !important;
   }
   .h1 {
@@ -52,26 +52,26 @@ body, ul, li, p, a, label, input, div {
   .logo { font-weight: 500 !important;}
   .text-warning {  color: #ede861 !important;}
   .text-muted { color: #bcbcbc !important;}
-  .text-success { color: #59ab6e !important;}
+  .text-success { color: #0c2c3c !important;}
   .text-light { color: #cfd6e1 !important;}
   .bg-dark { background-color: #212934 !important;}
   .bg-light { background-color: #e9eef5 !important;}
   .bg-black { background-color: #1d242d !important;}
-  .bg-success { background-color: #59ab6e !important;}
+  .bg-success { background-color: #0c2c3c !important;}
   .btn-success {
-    background-color: #59ab6e !important;
-    border-color: #56ae6c !important;
+    background-color: #0c2c3c !important;
+    border-color: #0c2c3c !important;
   }
   .pagination .page-link:hover {color: #000;}
   .pagination .page-link:hover, .pagination .page-link.active {
-    background-color: #69bb7e;
-    color: #fff;
+    background-color: #0c2c3c;
+    color: rgb(0, 0, 0);
   }
   /* Nav */
   #templatemo_nav_top { min-height: 40px;}
   #templatemo_nav_top * { font-size: .9em !important;}
   #templatemo_main_nav a { color: #212934;}
-  #templatemo_main_nav a:hover { color: #69bb7e;}
+  #templatemo_main_nav a:hover { color: #0c2c3c;}
   #templatemo_main_nav .navbar .nav-icon { margin-right: 20px;}
   
   /* Hero Carousel */
@@ -80,7 +80,7 @@ body, ul, li, p, a, label, input, div {
   .templatemo-accordion a { color: #000;}
   .templatemo-accordion a:hover { color: #333d4a;}
   /* Shop */
-  .shop-top-menu a:hover { color: #69bb7e !important;}
+  .shop-top-menu a:hover { color: #0c2c3c !important;}
   /* Product */
   .product-wap { box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.10);}
   .product-wap .product-color-dot.color-dot-red { background:#f71515;}
@@ -117,11 +117,11 @@ body, ul, li, p, a, label, input, div {
   /* Carousel Hero */
   #template-mo-zay-hero-carousel .carousel-indicators li {
     margin-top: -50px;
-    background-color: #59ab6e;
+    background-color: #0c2c3c;
   }
   #template-mo-zay-hero-carousel .carousel-control-next i,
   #template-mo-zay-hero-carousel .carousel-control-prev i {
-    color: #59ab6e !important;
+    color: #0c2c3c !important;
     font-size: 2.8em !important;
   }
   /* Carousel Brand */
@@ -186,7 +186,21 @@ body, ul, li, p, a, label, input, div {
       height: 12px;
     }
   }
-  
+
   /* Extra large devices (large desktops, 1200px and up)*/
   @media (min-width: 1200px) {}
   
+p{
+  color:#000;
+}
+.h2{
+  color:#000 !important;
+}
+
+a .carouselcolor{
+  color: #0c2c3c;
+}
+
+.h1{
+  color: #0c2c3c;
+}
