@@ -28,6 +28,7 @@ class Cloth(models.Model):
     price= models.DecimalField(max_digits=10, decimal_places=2,null=False,validators=[validate_price])
     amount=models.PositiveIntegerField(null=False,validators=[MaxValueValidator(30),validate_quantity])
     slug= models.SlugField(max_length=200, null=True, blank=True, editable=False)
+    users_wishlist = models.ManyToManyField(User, related_name='wishlist', blank=True)
     
     def __str__(self):
         return self.name
