@@ -1,6 +1,6 @@
 from itertools import product
 from django.http import JsonResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth import authenticate,logout,login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
@@ -86,8 +86,10 @@ def updateItem(request):
     
     if action == 'add':
         orderItem.quantity = (orderItem.quantity + 1)
+        messages.success(request,'Item added to cart')
     elif action == 'remove':
         orderItem.quantity = (orderItem.quantity - 1)
+        messages.success(request,'Item removed from cart')
         
     orderItem.save()
     
@@ -100,6 +102,20 @@ def updateItem(request):
 @allowed_users(allowed_roles=['customer'])
 def profile(request):
     return render(request,'gabaystore/profile.html')
+
+@login_required(login_url='loginPage')
+def wishlist(request):
+    return render(request,'gabaystore/wishlist.html')
+
+@login_required(login_url='loginPage')
+def add_wishlist(request,id):
+    
+    cloth=get_object_or_404(Cloth,id=id)
+    
+    if cloth.users_wishlist.filter(id=request.user.id).exists():
+        cloth.users_wishlist.remove(request.user)
+        messages.success(request,'Removed from wishlist')
+
 
 @login_required(login_url='loginPage')
 @admin_only
