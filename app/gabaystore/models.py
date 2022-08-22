@@ -22,7 +22,7 @@ TYPES_CHOICES=[
 
 class Cloth(models.Model):
     name=models.CharField(max_length=150,null=True,unique=True,validators=[validate_name])
-    picture=models.ImageField(upload_to='media',null=True,blank=False,validators=[validate_file_name,validate_file_extension_and_size])
+    picture=models.ImageField(upload_to='/media',null=True,blank=False,validators=[validate_file_name,validate_file_extension_and_size])
     size=models.CharField(max_length=2,null=True,choices=SIZE_CHOICES,validators=[validate_size])
     clothing_type=models.CharField(max_length=20,null=True,choices=TYPES_CHOICES,validators=[validate_clothing_type])
     price= models.DecimalField(max_digits=10, decimal_places=2,null=True)
