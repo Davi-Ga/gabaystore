@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<title>Carrinho</title>
+<div class="col-12 mx-auto">
+    <h1 class="h3">My Wishlist</h1>
+    <div>Manage your Wishlist</div>
+    <hr />
+
+    {% if wishlist %}
+    
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for clothes in wishlist %}
+        
+            <div class="col" style="width: 18rem;">
+                <div class="card">
+                <a href="{% url 'detailClothPage' clothes.slug%}"><img src="{{clothes.picture.url}}" class="card-img-top" alt="{{clothes.picture.url}}" style="width: 16.4rem; height: 12.5rem;"></a>
+                <div class="card-body">
+                    <h5 class="card-title">{{clothes.name}}</h5>
+                    <p class="card-text">R$: {{clothes.price}}</p>
+                    <a type="button" class="btn btn-primary fw500 btn-sm" href="{% url 'addWishlistPage' clothes.id%}">Remove from Wishlist</a>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+    <p class="card-text">No products have been added to your wishlist yet</p>
+
+    {% endif %}
+    
+</div>
+
+
+{% endblock %}
