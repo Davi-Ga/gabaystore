@@ -21,14 +21,14 @@ TYPES_CHOICES=[
 ]
 
 class Cloth(models.Model):
-    name=models.CharField(max_length=150,null=False,unique=True,validators=[validate_name])
-    picture=models.ImageField(upload_to='media',null=False,blank=False,validators=[validate_file_name,validate_file_extension_and_size])
-    size=models.CharField(max_length=2,null=False,choices=SIZE_CHOICES,validators=[validate_size])
-    clothing_type=models.CharField(max_length=20,null=False,choices=TYPES_CHOICES,validators=[validate_clothing_type])
-    price= models.DecimalField(max_digits=10, decimal_places=2,null=False,validators=[validate_price])
-    amount=models.PositiveIntegerField(null=False,validators=[MaxValueValidator(30),validate_quantity])
+    name=models.CharField(max_length=150,null=True,unique=True,validators=[validate_name])
+    picture=models.ImageField(upload_to='media',null=True,blank=False,validators=[validate_file_name,validate_file_extension_and_size])
+    size=models.CharField(max_length=2,null=True,choices=SIZE_CHOICES,validators=[validate_size])
+    clothing_type=models.CharField(max_length=20,null=True,choices=TYPES_CHOICES,validators=[validate_clothing_type])
+    price= models.DecimalField(max_digits=10, decimal_places=2,null=True)
+    amount=models.PositiveIntegerField(null=True,validators=[MaxValueValidator(30)])
     slug= models.SlugField(max_length=200, null=True, blank=True, editable=False)
-    users_wishlist = models.ManyToManyField(User, related_name='wishlist', blank=True)
+    users_wishlist = models.ManyToManyField(User, related_name='wishlist', blank=True,null=True)
     
     def __str__(self):
         return self.name
@@ -54,7 +54,7 @@ signals.pre_save.connect(cloth_pre_save, sender=Cloth)
 class Order(models.Model):
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     total_price=models.DecimalField(max_digits=10, decimal_places=2,null=True)
-    date_order=models.DateTimeField(auto_now_add=True)
+    date_order=models.DateTimeField(auto_now_add=True,null=True)
     paid_status=models.BooleanField(default=False,null=True,blank=False)
     transaction_id=models.CharField(max_length=200,null=True)
 
@@ -95,7 +95,7 @@ class Shipping(models.Model):
     city=models.CharField(max_length=200,null=True)
     state=models.CharField(max_length=200,null=True)
     zipcode=models.CharField(max_length=200,null=True)
-    date_added=models.DateTimeField(auto_now_add=True)
+    date_added=models.DateTimeField(auto_now_add=True,null=True)
 
     def __str__(self):
         return self.address
