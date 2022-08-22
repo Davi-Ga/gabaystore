@@ -15,7 +15,7 @@ import os
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,8 +34,8 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 # Configuração para o ambiente de produção
 DEBUG = str(os.getenv('DEBUG'))
-#
-ALLOWED_HOSTS = [str(os.getenv('ALLOWED_HOSTS'))]
+
+#ALLOWED_HOSTS = [str(os.getenv('ALLOWED_HOSTS'))]
 # Acessos permitidos para o ambiente de produção
 ALLOWED_HOSTS = ['localhost','django_upstream','127.0.0.1','0.0.0.0','django','[::1]','*','https://gabaystore.herokuapp.com','http://localhost:6379','http://localhost:8000','http://localhost:5353']
 
@@ -59,7 +59,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -174,4 +174,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
