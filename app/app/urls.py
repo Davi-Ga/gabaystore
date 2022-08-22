@@ -23,6 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('admin/defender/', include('defender.urls')), # for django-defender
     path('',include('gabaystore.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
