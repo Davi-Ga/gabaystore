@@ -17,6 +17,7 @@ urlpatterns = [
     path('orders/',views.orders,name='ordersPage'),
     path('update_item/',views.updateItem,name='updateItem'),
     path('cloth_add/',views.clothing_add,name='addClothPage'),
+    path('wishlist/',views.wishlist,name='wishlistPage'),
     path('wishlist/add/<int:id>',views.add_wishlist,name='addWishlistPage'),
     path('cloth_delete/<int:pk_cloth>',views.clothing_delete,name='deleteClothPage'),
     path('cloth_update/<int:pk_cloth>',views.clothing_update,name='updateClothPage'),
