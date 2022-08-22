@@ -22,7 +22,7 @@
             <br>
             <h3>{{cloth.name}}</h3>
           
-            <a href=""><span class="heart"><i class="bx bx-heart"></i></span></a>
+            <a href="{% url 'addWishlistPage' cloth.id%}"><span class="heart"><i class="bx bx-heart"></i></span></a>
           </div>
           <div class="mt-2 pr-3 content">
             <p><b>Size:</b> {{cloth.size}}</p>
