@@ -100,15 +100,22 @@ def updateItem(request):
     return JsonResponse('Item was added',safe=False)
 
 @login_required(login_url='loginPage')
-@allowed_users(allowed_roles=['customer'])
+
 def profile(request):
     return render(request,'gabaystore/profile.html')
 
 @login_required(login_url='loginPage')
+@allowed_users(allowed_roles=['customer'])
 def wishlist(request):
-    return render(request,'gabaystore/wishlist.html')
+    clothes= Cloth.objects.filter(users_wishlist=request.user)
+    context={
+        "wishlist":clothes
+    }
+    
+    return render(request,'gabaystore/wishlist.html',context=context)
 
 @login_required(login_url='loginPage')
+@allowed_users(allowed_roles=['customer'])
 def add_wishlist(request,id):
     
     cloth=get_object_or_404(Cloth,id=id)
@@ -167,7 +174,7 @@ def register(request):
             form=RegisterUserForm(request.POST)
             if form.is_valid():
                 user=form.save()
-                group = Group.objects.get_or_create(name='customer')
+                group = Group.objects.get(name='customer')
                 user.groups.add(group)
                 return redirect('loginPage')
         context={
