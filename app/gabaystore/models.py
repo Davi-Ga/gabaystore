@@ -85,18 +85,3 @@ class OrderItem(models.Model):
         total=self.cloth.price*self.quantity
         return total
     
-    def __str__(self):
-        return str(self.cloth)
-  
-class Shipping(models.Model):
-    customer=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
-    order=models.ForeignKey(Order,on_delete=models.SET_NULL,null=True)
-    address=models.CharField(max_length=200,null=True)
-    city=models.CharField(max_length=200,null=True)
-    state=models.CharField(max_length=200,null=True)
-    zipcode=models.CharField(max_length=200,null=True)
-    date_added=models.DateTimeField(auto_now_add=True,null=True)
-
-    def __str__(self):
-        return self.address
-    
