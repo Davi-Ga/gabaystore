@@ -84,6 +84,9 @@ class OrderItem(models.Model):
     def get_total(self):
         total=self.cloth.price*self.quantity
         return total
+    
+    def __str__(self):
+        return str(self.cloth)
   
 class Shipping(models.Model):
     customer=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
