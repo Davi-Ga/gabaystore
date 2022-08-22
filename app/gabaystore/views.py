@@ -1,5 +1,6 @@
+from http.client import HTTPResponse
 from itertools import product
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth import authenticate,logout,login
 from django.contrib.auth.decorators import login_required
@@ -115,6 +116,11 @@ def add_wishlist(request,id):
     if cloth.users_wishlist.filter(id=request.user.id).exists():
         cloth.users_wishlist.remove(request.user)
         messages.success(request,'Removed from wishlist')
+    else:
+        cloth.users_wishlist.add(request.user)
+        messages.success(request,'Added to wishlist')
+    
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 @login_required(login_url='loginPage')
