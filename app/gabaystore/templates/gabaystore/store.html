@@ -8,7 +8,7 @@
  
       <div class="col" style="width: 18rem;">
         <div class="card">
-          <a href="{% url 'detailClothPage' Cloth.slug%}"><img src="{{Cloth.picture}}" class="card-img-top" alt="{{Cloth.picture.url}}" style="width: 16.4rem; height: 12.5rem;"></a>
+          <a href="{% url 'detailClothPage' Cloth.slug%}"><img src="{{Cloth.picture}}" class="card-img-top" style="width: 16.4rem; height: 12.5rem;"></a>
           <div class="card-body">
             <h5 class="card-title">{{Cloth.name}}</h5>
             <p class="card-text">R$: {{Cloth.price}}</p>
