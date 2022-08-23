@@ -33,14 +33,6 @@ class Cloth(models.Model):
     def __str__(self):
         return self.name
     
-    @property
-    def imageURL(self):
-        try:
-            url = self.picture.url
-        except:
-            url = ''
-        return url
-    
     def get_absolute_url(self):
         return reverse("gabaystore:detailClothPage", args=self.id)
     
