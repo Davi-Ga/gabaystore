@@ -53,6 +53,7 @@ class Order(models.Model):
     def __str__(self):
         return str(self.id)
     
+    
     @property
     def get_cart_total(self):
         orderitems = self.orderitem_set.all()
@@ -77,3 +78,14 @@ class OrderItem(models.Model):
         total=self.cloth.price*self.quantity
         return total
     
+class Shipping(models.Model):
+    customer=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
+    order=models.ForeignKey(Order,on_delete=models.SET_NULL,null=True)
+    address=models.CharField(max_length=200,null=True)
+    city=models.CharField(max_length=200,null=True)
+    state=models.CharField(max_length=200,null=True)
+    zipcode=models.CharField(max_length=200,null=True)
+    date_added=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.address
