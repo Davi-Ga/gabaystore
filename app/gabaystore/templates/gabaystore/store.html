@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<title>Home</title>
+<title>Store</title>
 <div class="row row-cols-1 row-cols-md-2 g-4">
     {% for Cloth in clothes %}
  
@@ -11,7 +11,7 @@
           <a href="{% url 'detailClothPage' Cloth.slug%}"><img src="{{Cloth.picture.url}}" class="card-img-top" style="width: 16.4rem; height: 12.5rem;"></a>
           <div class="card-body">
             <h5 class="card-title">{{Cloth.name}}</h5>
-            <p class="card-text">R$: {{Cloth.price}}</p>
+            <p class="card-text">$: {{Cloth.price}}</p>
           </div>
         </div>
       </div>

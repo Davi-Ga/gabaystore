@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<title>Login</title>
 <link rel="stylesheet" href="{% static 'css/login_register.css' %}">
 <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
@@ -43,7 +44,7 @@
 
                 <p class="small mb-5 pb-lg-2"><a class="text-black-50" href="#!"></a></p>
   
-                <button class="btn btn-outline-dark btn-lg px-5" type="submit">Entrar</button>
+                <button class="btn btn-outline-dark btn-lg px-5" type="submit">Login</button>
   
                 <div class="d-flex justify-content-center text-center mt-4 pt-1">
                 
@@ -52,7 +53,7 @@
               </div>
   
               <div>
-                <p class="text-black-50 mb-0">Não possui uma conta? <a href="{% url 'registerPage' %}" class="text-black-50 fw-bold">Registre-se</a>
+                <p class="text-black-50 mb-0">Don't have any account? <a href="{% url 'registerPage' %}" class="text-black-50 fw-bold">Sign-up</a>
                 </p>
               </div>
   
