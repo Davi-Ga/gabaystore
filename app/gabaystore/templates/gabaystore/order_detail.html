@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<title>Detail</title>
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<div class="card">
+  <div class="row">
+      <div class="col-md-8 cart">
+        <div class="title">
+          <div class="row">
+            <div class="col"><h4><b>Order</b></h4></div>
+            <div class="col align-self-center text-right text-muted">{{order.get_cart_items}} items</div>
+          </div>
+        </div> 
+        {% for item in orderitems %}
+        <div class="row border-top border-bottom">
+          <div class="row main align-items-center">
+            <div class="col-2"><img class="img-fluid" src="{{item.cloth.picture.url}}"></div>
+            <div class="col">
+                  <div class="row ">{{item.cloth.name}}</div>
+                  <div class="row text-muted">{{ item.cloth.clothing_type }}</div>
+                </div>
+                <div class="col">
+                  <div class="quantity">
+                    
+                    <a href="#" class="border">{{item.quantity}}</a>
+         
+                  </div>
+                </div>
+                <div class="col">$ {{item.get_total}}<span class="close"><i class="bi bi-x-lg"></i></span></div>
+              </div>
+            </div>
+            {% endfor %}   
+            
+        
+          </div>
+          <div class="col-md-4 summary">
+            <div><h5><b>Summary</b></h5></div>
+            <hr>
+            <div class="row">
+              <div class="col" style="padding-left:0;">ITEMS: {{order.get_cart_items}}</div>
+              <div class="col text-right">$ {{order.get_cart_total}}</div>
+            </div>
+        
+            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+              <div class="col">TOTAL PRICE::</div>
+              <div class="col text-right">R$ {{order.get_cart_total}}</div>
+            </div>
+            
+        </div>
+  </div>
+  
+</div>
+
+
+{% endblock %}

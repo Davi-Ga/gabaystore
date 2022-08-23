@@ -9,8 +9,8 @@
           <div class="card text-black" style="border-radius: 1rem;">
             <div class="card-body p-5 text-center">
               <div class="mb-md-5 mt-md-4 pb-5">
+               
                 
-                <a href="{% url 'homePage' %}">
                 <table class="table table-hover">
                     <thead>
                       <tr>
@@ -21,6 +21,7 @@
                         <th scope="col">Transaction Id</th>
                         <th scope="col">Paid Status</th>
                         <th scope="col">Total Price</th>
+                        <th scope="col">View Order</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -33,6 +34,7 @@
                             <td>{{Order.transaction_id}}</td>
                             <td>{{Order.paid_status}}</td>
                             <td>{{Order.get_cart_total}}</td>
+                            <td><a href="{% url 'orderDetailPage' Order.id %}" class="btn"> <i class="bx bx-show-alt"></i></a></td>
                         </tr>
                         
                         {% endfor %}
