@@ -18,8 +18,8 @@
         "post-deploy-production": "heroku ps:scale test=2",
         "post-deploy-staging": "heroku ps:scale test=2",
         "post-deploy-test": "heroku ps:scale test=2",
-        "post-deploy-development": "heroku ps:scale test=2",
-        "test-setup": "./test-setup.sh"
+        "post-deploy-development": "heroku ps:scale test=2"
+      
 
       }
     }
