@@ -100,7 +100,6 @@ def updateItem(request):
     return JsonResponse('Item was added',safe=False)
 
 @login_required(login_url='loginPage')
-
 def profile(request):
     return render(request,'gabaystore/profile.html')
 
@@ -133,11 +132,24 @@ def add_wishlist(request,id):
 @login_required(login_url='loginPage')
 @admin_only
 def orders(request):
+    
     orders=Order.objects.all()
     context={
-        'orders':orders
+        'orders':orders,
+
     }
     return render(request,'gabaystore/orders.html',context=context)
+
+@login_required(login_url='loginPage')
+@admin_only
+def order_detail(request,id):
+    order=Order.objects.get(id=id)
+    orderitems=OrderItem.objects.filter(order=order)
+    context={
+        'order':order,
+        'orderitems':orderitems
+    }
+    return render(request,'gabaystore/order_detail.html',context=context)
 
 @unauthenticated_user
 def loginUser(request):
