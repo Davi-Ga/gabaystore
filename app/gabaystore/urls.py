@@ -23,6 +23,6 @@ urlpatterns = [
     path('cloth_update/<int:pk_cloth>',views.clothing_update,name='updateClothPage'),
     path('cloth_detail/<slug:slug>',views.clothing_detail,name='detailClothPage'),
 
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
