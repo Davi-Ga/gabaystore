@@ -8,8 +8,9 @@ from django.contrib.auth.models import Group
 from .decorators import allowed_users,admin_only,unauthenticated_user
 from .forms import RegisterUserForm
 from .forms import ClothingForm
+from .forms import ShippingForm
 from .models import Cloth
-from .models import OrderItem,Order
+from .models import OrderItem,Order,Shipping
 import json
 from django.contrib import messages
 
@@ -35,17 +36,25 @@ def home(request):
 @login_required(login_url='loginPage')
 @allowed_users(allowed_roles=['customer'])
 def checkout(request):
+    
     if request.user.is_authenticated:
         customer = request.user
         order,created = Order.objects.get_or_create(customer=customer, paid_status=False)
         items = order.orderitem_set.all()
         cartItems=order.get_cart_items
+        form=ShippingForm()
+        if request.method=='POST':
+            form=ShippingForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('homePage')
     else:
         items = []
-        order={'get_cart_total':0,'get_cart_items':0}
+        order={'get_cart_total':0,'get_cart_items':0,'shipping':0}
         cartItems = order['get_cart_items']
-        
+    
     context={
+        'form':form,
         'items':items,
         'order':order,
         'cartItems':cartItems
