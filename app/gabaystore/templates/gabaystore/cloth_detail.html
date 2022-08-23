@@ -41,7 +41,7 @@
           <div class="buttons d-flex flex-row mt-5 gap-5">
             {% if not user.is_staff %}
             
-              <button data-product={{cloth.id}} data-action="add" class="btn">Buy Now</button>
+              <button data-product={{cloth.id}} data-action="add" onclik="" class="btn">Buy Now</button>
               
             {% endif %}
 
@@ -62,5 +62,5 @@
     </div>
   </div>
 </div>
-<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+
 {% endblock %} 
