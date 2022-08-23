@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Cloth
+from .models import Shipping
 from django import forms
 
 class RegisterUserForm(UserCreationForm):
@@ -28,4 +29,15 @@ class ClothingForm(forms.ModelForm):
             'name':forms.TextInput(attrs={'class':'form-control'}),
             'picture':forms.FileInput(attrs={'class':'form-control'}),
             'size':forms.Select(attrs={'class':'form-control'}),
+        }
+
+class ShippingForm(forms.ModelForm):
+    class Meta:
+        model=Shipping
+        fields=['address','city','state','zipcode']
+        widgets={
+            'address':forms.TextInput(attrs={'class':'form-control'}),
+            'city':forms.TextInput(attrs={'class':'form-control'}),
+            'state':forms.TextInput(attrs={'class':'form-control'}),
+            'zipcode':forms.TextInput(attrs={'class':'form-control'}),
         }
