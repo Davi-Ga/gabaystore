@@ -11,6 +11,6 @@ RUN pip install --upgrade pip && pip install --no-cache-dir --upgrade -r require
 
 COPY ./app /app
 
-RUN python manage.py collectstatic --noinput
+RUN python /app/manage.py collectstatic --noinput
 
-CMD gunicorn app.wsgi:application -b 0.0.0.0:$PORT
+CMD gunicorn app.wsgi:application -b 0.0.0.0:8080
