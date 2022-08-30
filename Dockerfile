@@ -9,10 +9,12 @@ COPY requirements.txt .
 
 RUN pip install --upgrade pip && pip install --no-cache-dir --upgrade -r requirements.txt
 
+RUN pip install python-dotenv 
+
 COPY ./app /app
 
-RUN python /app/manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput
 
-RUN python /app/manage.py makemigrations && python /app/manage.py migrate
+RUN python manage.py makemigrations && python manage.py migrate
 
 CMD gunicorn app.wsgi:application -b 0.0.0.0:8080
