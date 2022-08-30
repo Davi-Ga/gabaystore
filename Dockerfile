@@ -13,4 +13,6 @@ COPY ./app /app
 
 RUN python /app/manage.py collectstatic --noinput
 
+RUN python /app/manage.py makemigrations && python /app/manage.py migrate
+
 CMD gunicorn app.wsgi:application -b 0.0.0.0:8080
