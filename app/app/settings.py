@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 #Carregando o arquivo de configuração .env
-import django_heroku
+
 from dotenv import load_dotenv
 import os
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
@@ -158,7 +158,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 
-django_heroku.settings(locals())
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
