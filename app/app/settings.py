@@ -112,11 +112,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_NAME'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': os.getenv('POSTGRES_HOST'),
-        'PORT': os.getenv('POSTGRES_PORT'),
+        'NAME': 'gabaystore',
+        'USER': 'postgres',
+        'PASSWORD': '0d03a6ee39bb5340b302cd60e5878fd351035a3703aeba35',
+        'HOST': 'gabaystore-db.internal',
+        'PORT': 5432,
     }
 }
 
