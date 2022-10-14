@@ -37,7 +37,7 @@ DEBUG = str(os.getenv('DEBUG'))
 
 #ALLOWED_HOSTS = [str(os.getenv('ALLOWED_HOSTS'))]
 # Acessos permitidos para o ambiente de produção
-ALLOWED_HOSTS = ['localhost','django_upstream','127.0.0.1','0.0.0.0','django','[::1]','*','https://gabaystore.herokuapp.com','http://localhost:6379','http://localhost:8000','http://localhost:5353']
+ALLOWED_HOSTS = ['localhost','django_upstream','127.0.0.1','0.0.0.0','django','[::1]','*','https://gabaystore.fly.dev','http://localhost:6379','http://localhost:8000','http://localhost:5353']
 
 
 # Application definition
