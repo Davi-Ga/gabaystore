@@ -59,7 +59,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,17 +69,18 @@ MIDDLEWARE = [
     #'defender.middleware.FailedLoginMiddleware',
 ]
 CSRF_TRUSTED_ORIGINS = [
-    'https://gabaystore.herokuapp.com',
+    'https://gabaystore.fly.dev',
     'http://localhost:5353',
     'http://localhost:6379',
     'http://localhost:8000',
 ]
 
 CORS_TRUSTED_ORIGINS = [
-    'https://gabaystore.herokuapp.com',
+    'https://gabaystore.fly.dev',
     'http://localhost:6379',
     'http://localhost:5353',
     'http://localhost:8000',
+    
     
 ]
 
@@ -176,4 +177,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
