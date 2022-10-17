@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 #Carregando o arquivo de configuração .env
-#TESTANDO
+#TESTANDOooo
 from dotenv import load_dotenv
 import os
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
