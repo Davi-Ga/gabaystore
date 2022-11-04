@@ -160,7 +160,8 @@ LOGGING = {
     
 }
 MAIL_ADMINS={
-    'davigaldinoky@gmail.com'
+    'davigaldinoky@gmail.com',
+    'contatodavigos@gmail.com',
 }
 
 # Internationalization
