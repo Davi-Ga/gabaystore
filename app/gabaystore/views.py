@@ -1,5 +1,3 @@
-from http.client import HTTPResponse
-from itertools import product
 from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth import authenticate,logout,login
@@ -10,7 +8,7 @@ from .forms import RegisterUserForm
 from .forms import ClothingForm
 from .forms import ShippingForm
 from .models import Cloth
-from .models import OrderItem,Order,Shipping
+from .models import OrderItem,Order
 import json
 from django.contrib import messages
 
